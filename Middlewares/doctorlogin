@@ -1,0 +1,38 @@
+const userauthenticate = require('../Database/docauth')
+
+const docauth = async(req,res) =>{
+    const { username, password } = req.body;
+  
+    const result = await userauthenticate(username);
+    if (result.rows.length === 1) {
+        const user = {
+            username: result.rows[0].FIRSTNAME,
+            id:result.rows[0].ID
+        };
+        if (user) {
+            console.log('Authenticated user:', user);
+            req.session.user = user;
+            // Redirect to the landing page after successful login
+            console.log(user);
+            res.redirect('/doctors/dashboard');
+        } else {
+            res.send('Invalid username or password');
+        }
+        
+    } else {
+        console.log('return null');
+    }
+
+}
+
+
+const doclogincontroller = (req,res,next) => {
+   // console.log("here we are");
+    res.render('docLogin');
+}
+
+const docsignupcontroller = (req,res) =>{
+  res.render('docsignup')
+}
+
+module.exports = {docauth,doclogincontroller,docsignupcontroller};

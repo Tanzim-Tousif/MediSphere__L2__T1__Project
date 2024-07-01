@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Patient Profile Page</title>
+
+    <meta name="author" content="Your Name" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+            <!-- Add this script section in the head of your HTML file -->
+    <style>
+        /* Your existing styles go here */
+        body {
+      background: #dfe9f5;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    }
+    
+    .container {
+      display: flex;
+    }
+    
+    nav {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      background: #fff;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      text-align: center;
+      display: flex;
+      margin: 10px 0 0 10px;
+    }
+    
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+    
+    .logo span {
+      font-weight: bold;
+      padding-left: 15px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    nav .fas {
+      position: relative;
+      width: 70px;
+      height: 40px;
+      top: 14px;
+      font-size: 20px;
+      text-align: center;
+    }
+    
+    .nav-item {
+      position: relative;
+      top: 12px;
+      margin-left: 8px;
+    }
+    
+    a:hover {
+      background: #eee;
+    }
+    
+    .logout {
+      position: absolute;
+      bottom: 0;
+    }
+        /* Additional styles for patient profile */
+        .patient-profile .card {
+            border-radius: 10px;
+            width:100%;
+        }
+
+        .patient-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .patient-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .patient-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .patient-profile .table th,
+        .patient-profile .table td {
+            font-size: 14px;
+            padding: 5px 10px;
+            color: #000;
+        }
+        .rt-container {
+	margin: 0 auto;
+	padding-left:12px;
+	padding-right:12px;
+}
+.rt-row:before, .rt-row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.rt-row:after {
+  clear: both;
+}
+[class^="col-rt-"] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0 15px;
+  min-height: 1px;
+  position: relative;
+}
+.dashboard{
+    width: 160px;
+    height: 900x;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+    font-weight: 500;
+    margin-left: 85px;
+    transition: .5s;
+    background-color: azure;   
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="col-rt-12">
+                <div class="Scriptcontent">
+                    <!-- Patient Profile -->
+                    <div class="patient-profile py-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header bg-transparent text-center">
+                                            <img class="profile_img" src="../public/doctor.jpg" alt="patient avatar">
+                                            <!-- <i class="fas fa-user fa-lg profile_img"></i> -->
+                                            <h3><%= patient.FULLNAME %></h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-0"><strong class="pr-1">Patient ID:</strong><%= patient.PATIENTID %></p>
+                                            <p class="mb-0"><strong class="pr-1">Address:</strong><%= patient.ADDRESS %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header bg-transparent border-0">
+                                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Medical Information</h3>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th width="30%">Date of Birth</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.FORMATTED_DATEOFBIRTH %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Contact Number</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.CONTACTNUMBER %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Blood Group</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.BLOODGROUP %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Mail Address</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.EMAILADDRESS %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Weight</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.WEIGHT %> kg</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Height</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.HEIGHT %> cm</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Vaccination History</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.VACCINATIONHISTORY %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Blood Pressure</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.BLOODPRESSURE %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">BMI</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.BMI %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Heart Rate</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= patient.HEARTRATE %></td>
+                                                </tr>
+                                            </table>
+                                            <!-- craete a button to update profile -->
+                                            <button class="dashboard" onclick="window.location.href = '/landing/dashboard/profileupdate'">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Patient Profile -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

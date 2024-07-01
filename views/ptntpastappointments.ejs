@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard | Health Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+       .info {
+      display: flex;
+      /* Use flexbox to arrange children */
+      /* Space elements evenly */
+      padding: 20px;
+      background-color: whitesmoke;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      border-radius: 100px;
+      margin-left: 24px;
+      margin-top: 70px;
+      margin-right: 24px;
+      justify-content: space-evenly;
+    }
+    .linktag{
+      text-decoration: none;
+      color: black;
+    }
+    .info:hover{
+      background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+        .styletaka{
+          color: blue;
+        }
+    }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfe9f5;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+}
+
+nav {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background: #fff;
+  width: 280px;
+  overflow: hidden;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.common {
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 14px;
+  display: table;
+  width: 280px;
+  padding: 10px;
+}
+
+nav .fas {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.nav-item {
+  position: relative;
+  top: 12px;
+  margin-left: 8px;
+}
+
+.common:hover {
+    background: #eee;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Main Section */
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  max-height: 720px;
+    overflow-y: auto;
+
+}
+
+.main-top {
+  display: flex;
+  width: 100%;
+}
+
+.main-top i {
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+
+.main-patient-info {
+  display: flex;
+  margin-top: 20px;
+}
+
+.main-patient-info .card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.main-patient-info .card h3 {
+  margin: 10px;
+  text-transform: capitalize;
+}
+
+.main-patient-info .card p {
+  font-size: 12px;
+}
+
+.main-patient-info .card button {
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.main-patient-info .card button:hover {
+  background: rgba(223, 70, 15, 0.856);
+}
+
+.main-patient-info .card i {
+  font-size: 22px;
+  padding: 10px;
+}
+
+/* Medical Records */
+.main-medical-records {
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.records-box {
+  width: 100%;
+  height: 300px;
+  padding: 10px 10px 30px 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.records-box ul {
+  list-style: none;
+  display: flex;
+}
+
+.records-box ul li {
+  margin: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.records-box ul .active {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.records-box .records {
+  display: flex;
+}
+
+.record {
+  width: 33%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  background: rgb(235, 233, 233);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.record p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.record button {
+  background: #000;
+  color: #fff;
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.record button:hover {
+  background: rgba(0, 0, 0, 0.842);
+}
+
+.record i {
+  font-size: 7rem;
+  float: right;
+  margin: -20px 20px 20px 0;
+}
+
+.diagnosis {
+  color: rgb(25, 94, 54);
+}
+
+.prescription {
+  color: rgb(104, 179, 35);
+}
+
+.appointments {
+  color: rgb(28, 98, 179);
+}
+
+/* Additional styles for patient profile */
+.patient-profile .card {
+  border-radius: 10px;
+}
+
+.patient-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+
+.patient-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.patient-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+
+.patient-profile .table th,
+.patient-profile .table td {
+  font-size: 14px;
+  padding: 5px 10px;
+  color: #000;
+}
+
+.rt-container {
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.rt-row:before,
+.rt-row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.rt-row:after {
+  clear: both;
+}
+
+[class^="col-rt-"] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0 15px;
+  min-height: 1px;
+  position: relative;
+}
+
+/* Add this to your CSS stylesheet */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.patient-profile-section {
+  animation: fadeIn 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+}
+
+.patient-profile-section.hide {
+  animation: fadeOut 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+  display: none;
+}
+
+.daily-update-section {
+  animation: fadeIn 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+}
+
+.daily-update-section.hide {
+  animation: fadeOut 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+  display: none;
+}
+
+.search-bar-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.search-bar {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-input {
+  width: 500px;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+ 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 35px;
+    background:#a6c5eb;
+    display: flex;
+    z-index: 99;
+    align-items: center;
+}
+.logospan{
+    color: blue;
+}
+.hudai{
+
+}
+.showappointments{
+    border: 1px groove rgb(68, 170, 176);
+    border-radius: 5px;
+
+}
+
+  </style>
+</head>
+
+<body>
+
+     <header>
+        <img src="../../public/logo.jpg" width="40px" style="margin-right:5px; border-radius: 9px; margin-left: 0px;">
+         <a href = "/landing" class = "hudai" style="text-decoration: none;"><h2 style="margin-left: 0px;">Medi<span class = "logospan">Sphere</span></h2></a>
+     </header> 
+
+
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <a class = "common" href="#" onclick="navigateToLanding()">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+            <li>
+                <a class = "common" href="#" onclick="navigateToLanding()">
+                  <i class="fas fa-home"></i>
+                  <span class="nav-item">Home</span>
+                </a>
+              </li>
+        <li>
+          <a class = "common" href="/consultation">
+            <i class="fas fa-user-md"></i>
+            <span class="nav-item">Specialities</span>
+          </a>
+        </li>
+        <li>
+          <a class = "common" href="#" class="logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    
+    <div class="main" style="margin-top: 50px;">
+    <h2 style="justify-content: center; margin-top: 5px; margin-left: 5px;">Your all Upcoming Appointments</h2> 
+    
+    <div class="showappointments " style="margin-top: 20px;">
+        
+    <% if(result.length > 0) {%>
+        <% for(let i = 0;i < result.length;i++) {%>
+        <% console.log(result[i].APPOINTMENTID) %>
+  <a href='/landing/dashboard/pastappointment/<%= result[i].APPOINTMENTID %>' class='linktag' style="margin-bottom: 90px;">
+  <div class="info" style="margin-bottom: 90px;">
+    <div class="picsection" style="margin-left: 50px;">
+      <!-- <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/persons/123577/profile_photos/aLTRMjpgUgHcHTUaUyUdxXiDTZwsFrqCoxPOKQA3.jpg" height="120"> -->
+      <i class=" fa-7x fas fa-calendar-alt"></i>
+    </div>
+    <div class="namesection" style="margin-left: 50px;">
+      <h3><%= result[i].FULLNAME %></h3>
+      <h2>MBBS</h2>
+      <p>Specialities:</p>
+      <h3><span style="background-color: blue; color:white; padding-left: 8px; padding-right: 8px; border-radius: 5px;"><%= result[i].SPECIALITY %></span></h3>
+    </div>
+    <div class="exsection" style="margin-left: 50px;">
+    <div style="display: flex;">
+        <p>Appointment Date:   </p><p>
+        <h3 style="margin-left: 9px;"><%= ' ' + result[i].APPOINTMENT_DATE %></h3>
+    </div>
+      <p>Time:  <strong style="margin-left: 9px;"><%= result[i].STARTTIME + ' - ' + result[i].ENDTIME %></strong></p>
+      <p>Serial No: <strong style="margin-left: 9px;"><%= result[i].SERIALNO %></strong></p>
+    </div>
+    <div class="feesection" style="margin-left: 200px; margin-right: 60px;">
+        <h1><span class="styletaka">        ৳ <%= result[i].CONSULTATIONFEE %></span></h4>
+            <p>(include vat)</p>
+        <p>Per consultation</p>
+    </div>
+  </div>
+</a>
+<% } %>
+<% } else {%> 
+
+         <i class="fa-9x fa-solid fa-calendar-xmark" style="font-size: 20rem; margin-left: 380px; margin-top: 60px;"></i>
+        <h2 style="margin-left: 300px; margin-top: 10px;">You Have No Pending Appointments</h2>
+        <% } %>
+    </div>
+    
+     
+    </section>
+  </div>
+  <div style="margin-top: 140px;">
+
+  </div>
+  <script>
+    function navigateToLanding() {
+      window.location.href = "/landing/dashboard";
+    }
+    function logout() {
+      window.location.href = 'http://localhost:3300/login';
+    }
+  </script>
+</body>
+</html>

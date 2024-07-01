@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appoinment Confirmation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background:skyblue;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 99;
+    align-items: center;
+}
+.logo{
+    font-size: 2em;
+    color: aliceblue;
+    user-select: none;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1.3em;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 135px;
+}
+.navigation a::after{
+    content: ' ';
+    position:absolute;
+    width: 100%;
+    height: 3px;
+    background: blue;
+    border-radius: 5px;
+    left:0px;
+    bottom: -6px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s;
+}
+.navigation a:hover::after{
+    transform: scaleX(1);
+}
+.navigation .button-login{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    outline: none;
+    border-radius: 26px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+    font-weight: 500;
+    margin-left: 100px;
+    transition: .5s;
+    background-color: azure;
+}
+.navigation .button-login:hover{
+    background: blue;
+    color: whitesmoke;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*https://img.freepik.com/free-vector/doctor-stethoscope-object-blue-background_1017-14996.jpg?w=996&t=st=1705927716~exp=1705928316~hmac=877938041fff11f3a2d46a84f1f491287ec189160e3f0f7ad941841496bb5e22*/
+    background: url('../../public/home.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+.othercontainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+.container{
+   display: flex;
+   margin-top: 70px;
+  justify-content: space-evenly;
+ }
+ .gphysician{
+padding: 20px;
+background-color:whitesmoke;
+border: 1px solid #ddd;
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+box-sizing: border-box;  
+border-radius: 20px;
+margin-left: 24px;
+}
+.gphysician:hover{
+background-color: bisque;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+transform: scale(1.05); /* Increase size on hover */
+}
+.linkgp{
+text-decoration: none;
+color: black;
+}
+
+
+
+
+
+
+.main{
+    background-color: rgb(163, 204, 220);
+    padding: 150px;
+    margin-top: 20px;
+}
+.text{
+    margin-top: 50px;
+    margin-left: 70px;
+    display: none;
+    animation: grow 2s;
+    
+}
+@keyframes grow {
+  from {
+    font-size: 5px;
+  }
+  to {
+    font-size: 20px;
+  }
+}
+    </style>
+</head>
+<body>
+
+
+
+    
+    <header>
+        <img src="../public/logo.jpg" width="70px" style="margin-right: 10px; border-radius: 9px;">
+         <a href = "/landing" style="text-decoration: none;"><h2 class="logo">Medi<span style="color: blue;">Sphere</span></h2></a>
+         <nav class="navigation">
+             <a href="/consultation">Consultation</a>
+             <a href="/diagnostics">Diagonstics</a>
+            <a href="/landing/dashboard" class = "head">Dashboard</a>
+
+         </nav>
+     </header>
+
+
+
+
+
+    <div class="main">
+        <i class="fa-9x fa-regular fa-circle-check" style="margin-left: 200px; margin-bottom: 20px;"></i>
+            <div class="smiley" style="display: flex;">
+                <h1>Appoinment Booking Successful!!</h1>
+
+            </div>
+            <% console.log("from ejs") %>
+            <% console.log(patient + '  ' + doctor + '  ' + appointment) %>
+             <p style="margin-bottom: 20px;">A confirmation mail has been sent to the provided e-mail address</p><br><br>
+             <a href="/appointments/letter?patient=<%=patient%>&doctor=<%=doctor%>&appointment=<%=appointment%>" style="margin-left: 120px; text-decoration: none; color: black; border: 4px solid whitesmoke;outline: none;border-radius: 6px; padding: 15px; background-color: skyblue;"> <strong>Download Appointment Details</strong></a>
+             <h5 style="margin-top: 20px; margin-left: 140px;">Please bring this During Appoinment</h3>
+             <h3 class="text" id = "hidden" style="font-size: 20px;">
+                Thank you for being wih team MediSphere
+             </h3>
+            </div>
+            <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            document.getElementById("hidden").style.display = "block";
+        }, 1000); // Adjust the time delay in milliseconds (3 seconds in this example)
+    });
+
+            </script>
+</body>
+</html>

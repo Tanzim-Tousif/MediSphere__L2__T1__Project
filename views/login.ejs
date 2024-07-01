@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: Raleway, sans-serif;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background:transparent;
+    display: flex;
+
+    z-index: 99;
+    align-items: center;
+}
+
+body {
+  /*	background: linear-gradient(90deg, #C7C5F4, #776BCC);  */
+  background: url("../public/medi.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+  
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.screen {		
+	background: linear-gradient(90deg, #5D54A4, #7C78B8);	
+	position: relative;	
+	height: 600px;
+	width: 360px;	
+	box-shadow: 0px 0px 24px #5C5696;
+}
+
+.screen__content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+}
+
+.screen__background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);	
+}
+
+.screen__background__shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen__background__shape1 {
+	height: 520px;
+	width: 520px;
+	background: #FFF;	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+	height: 220px;
+	width: 220px;
+	background: #6C63AC;	
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, #5D54A4, #6A679E);
+	top: -24px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape4 {
+	height: 400px;
+	width: 200px;
+	background: #7E7BB9;	
+	top: 420px;
+	right: 50px;	
+	border-radius: 60px;
+}
+
+.login {
+	width: 320px;
+	padding: 30px;
+	padding-top: 126px;
+    background: transparent;
+    
+}
+
+.login__field {
+	padding: 20px 0px;	
+	position: relative;	
+}
+
+.login__icon {
+	position: absolute;
+	top: 30px;
+	color: #7875B5;
+}
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+	transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
+
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	border-color: #6A679E;
+	outline: none;
+}
+
+.button__icon {
+	font-size: 24px;
+	margin-left: auto;
+	color: #7875B5;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.signup-link a {
+    color: #5b13b9;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.title {
+    font-size: 44px;
+    font-weight: 800;
+    color: #a8a8a8;
+    text-align: right;
+    margin-bottom: -25px;
+    padding: 19px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    font-family: 'Raleway', sans-serif; /* Applying the Raleway font */
+}
+
+#passwordToggle {
+            cursor: pointer;
+        }
+
+        a:visited {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../public/logo.jpg" width="70px" style="margin-right: 10px; border-radius: 9px;">
+        <a href = "/landing" style="text-decoration: none; "><h2 class="logo">Medi<span style="color: blue;">Sphere</span></h2></a>
+     </header>
+
+<div class="container" style="margin-top: 70px;">
+    <div class="screen">
+        <div class="screen__content">
+            <div class="title">
+                <span class="medi" style="color: #7875B5;">Medi</span><span class="sphere" style="color: #fff;">Sphere</span>
+            </div>
+
+            <form class="login" action="/login/logincheck" method="post" >
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" class="login__input" placeholder="Enter your Email address" name="username">
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" class="login__input" placeholder="Password" name="password" id="passwordInput">
+                    <span class="password-toggle" id = "passwordToggle" onclick="togglePassword()">
+                       <!--<i class="fa fa-eye"></i>--> 
+                       <i class="fa-solid fa-eye-low-vision"></i>
+                    </span>
+                </div>
+                
+                <button class="button login__submit">
+                    <span class="button__text">Log In Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+            <div class="signup-link">
+                <p>Not registered?</p>
+                <p><a href="/signup" style="text-decoration: none; color: #fff;">Signup!</a></p>
+            </div>
+            <div class="signup-link">
+                <p><a href="/docLogin" style="text-decoration: none; color: #fff;">Log in as a doctor</a></p>
+            </div>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+<script>
+    function togglePassword() {
+    var passwordInput = document.getElementById('passwordInput');
+    var passwordToggle = document.getElementById('passwordToggle');
+
+    // Toggle the type attribute
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.textContent = 'Hide Password';
+    } else {
+        passwordInput.type = 'password';
+        passwordToggle.textContent = 'Show Password';
+    }
+}
+
+</script>
+</body>
+</html>

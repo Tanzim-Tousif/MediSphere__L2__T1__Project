@@ -1,0 +1,127 @@
+<style>
+            .navvar{
+            margin-top: 17px;
+            margin-left: 10px;
+            display: flex;
+            
+            
+        }
+        .logosection{
+            display: flex;
+            
+        }
+        .namesection{
+            margin-left: 18px;
+        }
+        .logowords{
+            font-weight: 700;
+            font-size: px;
+        }
+        .logounder{
+            font-weight: .1px;
+            color: burlywood;
+        }
+        .othercontainer{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .container{
+           display: flex;
+           margin-top: 70px;
+          justify-content: space-evenly;
+         }
+         .gphysician{
+    padding: 20px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 24px;
+}
+.gphysician:hover{
+    background-color: bisque;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1.05); /* Increase size on hover */
+}
+.linkgp{
+    text-decoration: none;
+    color: black;
+}
+.consultationsection{
+    width: 160px;
+
+    border-radius: 30px;
+  height: 50px;
+  padding-left: 30px;
+  padding-top: 3px;
+  padding-bottom: 15px;
+  background-color: rgb(238, 231, 231);
+
+  margin-left: 112px; margin-right:112px;
+}
+.consultationsection:hover{
+    background-color: rgb(152, 152, 173);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
+}
+.diagonosticsection{
+width: 150px;
+border-radius: 30px;
+  height: 50px;
+  padding-left: 50px;
+  
+  padding-top: 3px;
+  padding-bottom: 15px;
+  background-color: rgb(238, 231, 231);
+  margin-left: 100px; margin-right:112px;
+}
+.diagonosticsection:hover{
+    background-color: rgb(152, 152, 173);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
+}
+.doctors{
+    width: 150px;
+border-radius: 30px;
+  height: 50px;
+  padding-left: 40px;
+  padding-top: 3px;
+  padding-bottom: 15px;
+  background-color: rgb(238, 231, 231);
+  margin-left: 100px; margin-right:120px;
+}
+.doctors:hover{
+    background-color: rgb(131, 131, 181);
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.5);
+}
+</style>
+
+
+<nav class="navvar">
+    <div class="logosection">
+        <img src="logo.png" width="70">
+        <div class="namesection">
+            <h1 class="logowords"><span style="color: blue;">Medi</span>Sphere</h1>
+            <p class = "logounder" style="line-height: .01px;">Healthcare Anytime Anywhere</p>
+        </div>
+
+    </div>
+    <div class="othercontainer">
+        <div class="consultationsection">
+            <a href="/consultation" class="linkgp"><h2>Consultation</h2></a>
+        </div>
+      
+        <div class="diagonosticsection"style="margin-left: 40px; margin-right: 120px;">
+            <a href="/diagonstics"class="linkgp"><h2>Diagonstics</h2></a>
+        </div>
+
+        <div class="doctors" style="margin-left: 40px; margin-right: 120px;">
+            <a href="/doctors"class="linkgp"><h2>
+                For Doctors</h2></a>
+        </div>
+        <div class="login"style="margin-left: 40px; margin-right: 40px;">
+            <button style="margin-top: 15px; width: 80px; height: 40px; border-radius: 20px; background-color: blue; font-size: 20px; color:white; border: none; " onclick="window.location.href = '/login';">Log in</button>
+        </div>
+    </div>
+
+</nav>

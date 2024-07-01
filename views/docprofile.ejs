@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>doctor Profile Page</title>
+
+    <meta name="author" content="Your Name" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+            <!-- Add this script section in the head of your HTML file -->
+    <style>
+        /* Your existing styles go here */
+        body {
+      background: #dfe9f5;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    }
+    
+    .container {
+        position: center; 
+      width: 118%;
+
+    }
+    
+    nav {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      background: #fff;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      text-align: center;
+      display: flex;
+      margin: 10px 0 0 10px;
+    }
+    
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+    
+    .logo span {
+      font-weight: bold;
+      padding-left: 15px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    nav .fas {
+      position: relative;
+      width: 70px;
+      height: 40px;
+      top: 14px;
+      font-size: 20px;
+      text-align: center;
+    }
+    
+    .nav-item {
+      position: relative;
+      top: 12px;
+      margin-left: 8px;
+    }
+    
+    a:hover {
+      background: #eee;
+    }
+    
+    .logout {
+      position: absolute;
+      bottom: 0;
+    }
+        /* Additional styles for doctor profile */
+        .doctor-profile .card {
+            border-radius: 10px;
+            width: 100%;
+
+        }
+
+        .doctor-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .doctor-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .doctor-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .doctor-profile .table th,
+        .doctor-profile .table td {
+            font-size: 14px;
+            padding: 5px 10px;
+            color: #000;
+        }
+        .rt-container {
+	margin: 0 auto;
+	padding-left:12px;
+	padding-right:12px;
+}
+.rt-row:before, .rt-row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.rt-row:after {
+  clear: both;
+}
+[class^="col-rt-"] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0 15px;
+  min-height: 1px;
+  position: relative;
+}
+.dashboard{
+    width: 160px;
+    height: 900x;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+    font-weight: 500;
+    margin-left: 85px;
+    transition: .5s;
+    background-color: azure;   
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="col-rt-12">
+                <div class="Scriptcontent">
+                    <!-- doctor Profile -->
+                    <div class="doctor-profile py-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header bg-transparent text-center">
+                                            <img class="profile_img" src="../public/r.jpg" alt="doctor avatar">
+                                            <!-- <i class="fas fa-user fa-lg profile_img"></i> -->
+                                            <h3><%= doctor.FIRSTNAME %> <%= doctor.LASTNAME %></h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-0"><strong class="pr-1">Doctor ID:</strong><%= doctor.DOCTORID %></p>
+                                            <p class="mb-0"><strong class="pr-1">Address:</strong><%= doctor.ADDRESS %></p>
+                                            <p class="mb-0"><strong class="pr-1">Contact Number:</strong><%= doctor.CONTACTNUMBER %></p>
+                                            <p class="mb-0"><strong class="pr-1">Email Address:</strong><%= doctor.EMAILADDRESS %></p>
+                                            <p class="mb-0"><strong class="pr-1">Hospital: </strong><%= doctor.HOSPITALNAME %></p>
+                                            <p class="mb-0"><strong class="pr-1">Chamber Address:</strong><%= doctor.CHAMBERADDRESS %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header bg-transparent border-0">
+                                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Qualifications & Experience</h3>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th width="30%">Institutions </th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.INSTITUTE %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Degree</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.DEGREE %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Year Completed</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.YEARCOMPLETED %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Previous Hospital</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.HOSPITALNAME_1 %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Position(Served as)</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.POSITION %> </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Timespan</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.TIMESPAN %> </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Department </th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.DEPARTMENTS %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Gender</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.GENDER %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Consultation Fee</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.CONSULTATIONFEE %></td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="30%">Followup Fee</th>
+                                                    <td width="2%">:</td>
+                                                    <td><%= doctor.FOLLOWUPFEE %></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End doctor Profile -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

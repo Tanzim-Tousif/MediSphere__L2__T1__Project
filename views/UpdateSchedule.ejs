@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard | Health Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+    * {
+      margin: 0;
+      padding: 0;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #dde2e8;
+    }
+
+    .containerr {
+      display: flex;
+    }
+
+    nav {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      background: #fff;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      text-align: center;
+      display: flex;
+      margin: 10px 0 0 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .logo span {
+      font-weight: bold;
+      padding-left: 15px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    a {
+      position: relative;
+      color: rgb(85, 83, 83);
+      font-size: 14px;
+      display: table;
+      width: 280px;
+      padding: 10px;
+    }
+
+    nav .fas {
+      position: relative;
+      width: 70px;
+      height: 40px;
+      top: 14px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .nav-item {
+      position: relative;
+      top: 12px;
+      margin-left: 8px;
+    }
+
+    a:hover {
+      background: #eee;
+    }
+
+    .logout {
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* Main Section */
+    .main {
+      position: relative;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .main-top {
+      display: flex;
+      width: 100%;
+    }
+
+    .main-top i {
+      position: absolute;
+      right: 0;
+      margin: 10px 30px;
+      color: rgb(110, 109, 109);
+      cursor: pointer;
+    }
+
+    .main-patient-info {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .main-patient-info .card {
+      width: 25%;
+      margin: 10px;
+      background: #fff;
+      text-align: center;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-patient-info .card h3 {
+      margin: 10px;
+      text-transform: capitalize;
+    }
+
+    .main-patient-info .card p {
+      font-size: 12px;
+    }
+
+    .main-patient-info .card button {
+      background: orangered;
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .main-patient-info .card button:hover {
+      background: rgba(223, 70, 15, 0.856);
+    }
+
+    .main-patient-info .card i {
+      font-size: 22px;
+      padding: 10px;
+    }
+
+    /* Medical Records */
+    .main-medical-records {
+      margin-top: 20px;
+      text-transform: capitalize;
+    }
+
+    .records-box {
+      width: 100%;
+      height: 300px;
+      padding: 10px 10px 30px 10px;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .records-box ul {
+      list-style: none;
+      display: flex;
+    }
+
+    .records-box ul li {
+      margin: 10px;
+      color: gray;
+      cursor: pointer;
+    }
+
+    .records-box ul .active {
+      color: #000;
+      border-bottom: 1px solid #000;
+    }
+
+    .records-box .records {
+      display: flex;
+    }
+
+    .record {
+      width: 33%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      background: rgb(235, 233, 233);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .record p {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .record button {
+      background: #000;
+      color: #fff;
+      padding: 7px 10px;
+      border-radius: 10px;
+      margin-top: 3rem;
+      cursor: pointer;
+    }
+
+    .record button:hover {
+      background: rgba(0, 0, 0, 0.842);
+    }
+
+    .record i {
+      font-size: 7rem;
+      float: right;
+      margin: -20px 20px 20px 0;
+    }
+
+    .diagnosis {
+      color: rgb(25, 94, 54);
+    }
+
+    .prescription {
+      color: rgb(104, 179, 35);
+    }
+
+    .appointments {
+      color: rgb(28, 98, 179);
+    }
+
+    /* Additional styles for patient profile */
+    .patient-profile .card {
+      border-radius: 10px;
+    }
+
+    .patient-profile .card .card-header .profile_img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 10px solid #ccc;
+      border-radius: 50%;
+    }
+
+    .patient-profile .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .patient-profile .card p {
+      font-size: 16px;
+      color: #000;
+    }
+
+    .patient-profile .table th,
+    .patient-profile .table td {
+      font-size: 14px;
+      padding: 5px 10px;
+      color: #000;
+    }
+
+    .rt-containerr {
+      margin: 0 auto;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .rt-row:before,
+    .rt-row:after {
+      display: table;
+      line-height: 0;
+      content: "";
+    }
+
+    .rt-row:after {
+      clear: both;
+    }
+
+    [class^="col-rt-"] {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      padding: 0 15px;
+      min-height: 1px;
+      position: relative;
+    }
+
+    /* Add this to your CSS stylesheet */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    .patient-profile-section {
+      animation: fadeIn 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+    }
+
+    .patient-profile-section.hide {
+      animation: fadeOut 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+      display: none;
+    }
+
+
+    
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #dfe9f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-container {
+  width: 60%;
+  margin-left: 200px;
+ 
+}
+
+
+
+/* Adjust appearance of schedule entry */
+
+
+/* Style remove button */
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #dc3545; /* Red color for remove button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
+/* Beautify calendar input */
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 5px solid blue;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  /* Remove default arrow icon */
+  appearance:inherit;
+  -webkit-appearance: none;
+  /* Add custom background and icon */
+  /* background-image: url('calendar-icon.png'); */
+  background-size: 20px;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  /* Add padding to make room for icon */
+  padding-right: 40px;
+}
+
+/* Adjust appearance when focused */
+input[type="date"]:focus {
+  border-color: #007bff;
+  /* Adjust box shadow for focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url('calendar-icon.png');
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  opacity: 0;
+} */
+
+/* input[type="date"]::-webkit-calendar-picker-popup {
+  box-shadow: 0 4px 8px rgba(150, 40, 40, 0.1);
+} */
+
+input[type="date"]::-webkit-calendar-picker-indicator:focus {
+  outline: none;
+}
+
+input[type="date"]::-webkit-calendar-date {
+  /* Display each date in a circle */
+  border-radius: 50%;
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  line-height: 30px; /* Center the date vertically */
+  text-align: center; /* Center the date horizontally */
+  display: inline-block;
+  margin: 1px; /* Add some margin between dates */
+  background-color: #ccc; /* Background color for the circle */
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#calendar, #schedule {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+
+}
+
+#calendar label, #schedule label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#calendar input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#add-schedule-btn, #submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#add-schedule-btn:hover, #submit-btn:hover {
+  background-color: #0056b3;
+}
+
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+
+.schedule-entry {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+
+}
+
+.schedule-entry select,
+.schedule-entry input[type="number"] {
+  width: calc(33.33% - 10px);
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.schedule-entry input[type="number"] {
+  width: 100px;
+  height: 40px;
+}
+
+#add-schedule-btn,
+#submit-btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#add-schedule-btn:hover,
+#submit-btn:hover {
+  background-color: #0056b3;
+}
+.start-time{
+  border: 2px solid gray;
+  margin-right: 15px;
+  height: 35px;
+}
+.end-time{
+  margin-left: 5px;
+  border: 2px solid gray;
+  margin-right: 15px;
+  height: 35px;
+
+}
+.remove-btnn{
+  background-color: skyblue;
+  border: 1px solid white;
+  padding: 6px;
+  border-radius: 7px;
+}
+
+.schedule-container {
+  width: 45%;
+}
+.schedule{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-column-gap: 150px;
+  margin-left: 35px;
+}
+
+.flatpickr-input{
+  width: 700px;
+  border: 3px solid blue;
+  font-family: sans-serif;
+  font-size: 2rem;
+  
+}
+  </style>
+</head>
+
+<body>
+  <div class="containerr">
+    <nav>
+      <ul>
+        <li>
+          <a href="/doctors/dashboard" class="logo">
+            <img src="../../public/logo.jpg" alt="">
+            <span class="nav-item">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/doctors/dashboard">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+
+
+        <li>
+          <a href="#" class="logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+
+    <div class="container">
+      <div class="calendar-container">
+        <h1 for="date">Select Schedule Date:</h1>
+        <input type="text" id="flatpickr-input">
+        <div class="wrapper" style="display: flex;">
+          <button id="add-schedule-btn">Add Schedule Entry</button>
+        <button id="submit-btn">Submit Schedule</button>
+        <input type="hidden" name="additionalData1" value= <%=id %>>
+        </div>
+        <!-- Calendar will be displayed here -->
+      </div>
+      <div class="schedule-container" style="margin-top: 20px;">
+      </div>
+    </div>
+    
+
+</div>
+
+<script>
+
+const hiddenInput = document.getElementsByName("additionalData1")[0];
+const id = hiddenInput.value;
+
+
+const getinfo = async() => {
+  const options = {
+    method:'GET'
+  }
+  const url = `http://localhost:3300/disabled?id=${id}`;
+  const response = await fetch(url,options);
+  const myjson = await response.json();
+  console.log(myjson)
+}
+
+
+async function initFlatpickr() {
+
+       
+    const options = {
+    method:'GET'
+  }
+  const url = `http://localhost:3300/disabled?id=${id}`;
+  const response = await fetch(url,options);
+  const myjson = await response.json();
+  console.log(myjson)
+  const daysArray = myjson.map(dayObject => dayObject.DT); // Assuming "date" or "day" key holds the day value
+ console.log(daysArray)
+
+
+
+
+  //   const disabledDates = ["2024-03-12"];
+    flatpickr("#flatpickr-input", {
+      disable: [
+    ...daysArray.map(dateStr => new Date(dateStr)), // Specific disabled dates
+    function(date) { // Disable all dates before today
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set time to 00:00:00
+      return date <= (today);
+    }
+  ],
+      "theme": { 
+        "daysContainer": {
+          "days": {
+            "disabled": {
+              "backgroundColor": "blue"
+            }
+          }
+        }
+      }
+    });
+  } 
+
+
+  
+
+  
+initFlatpickr();
+
+
+
+
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+
+  <script>
+
+    var socket = io();
+    document.addEventListener('DOMContentLoaded', function() {
+ 
+
+
+
+  const parentschedule = document.getElementsByClassName('schedule-container')[0];
+  const scheduleContainer = document.createElement('div');
+  scheduleContainer.classList.add('schedule')
+  parentschedule.appendChild(scheduleContainer)
+
+  const addScheduleBtn = document.getElementById('add-schedule-btn');
+
+  // Function to generate schedule entry HTML
+  function generateScheduleEntry() {
+    const entry = document.createElement('div');
+        entry.classList.add('schedule-entry');
+
+        // Create start time input
+        const startTimeInput = document.createElement('input');
+        startTimeInput.type = 'time';
+        startTimeInput.classList.add('start-time');
+        startTimeInput.required = true; // Required attribute added here
+        entry.appendChild(startTimeInput);
+
+
+        const text = document.createElement('p');
+        text.textContent = '-'
+        //text.classList.add('start-time');
+        entry.appendChild(text);
+
+
+        // Create end time input
+        const endTimeInput = document.createElement('input');
+        endTimeInput.type = 'time';
+        endTimeInput.classList.add('end-time');
+        startTimeInput.required = true; // Required attribute added here
+        entry.appendChild(endTimeInput);
+
+    // Create patient capacity input
+    const capacityInput = document.createElement('input');
+    capacityInput.type = 'number';
+    capacityInput.classList.add('capacity');
+    capacityInput.placeholder = 'Patient Capacity';
+    entry.appendChild(capacityInput);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-btnn');
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', function() {
+      entry.remove();
+    });
+    entry.appendChild(removeBtn);
+    scheduleContainer.appendChild(entry);
+  }
+
+  // Add event listener for the "Add Schedule Entry" button
+  addScheduleBtn.addEventListener('click', function() {
+    generateScheduleEntry();
+  });
+
+
+  function formatDate(date) {
+    // Get the hours, minutes, and seconds
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    // Determine AM/PM
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert hours to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Handle midnight (0 hours)
+
+    // Add leading zeros to minutes and seconds if needed
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    // Construct the formatted time string
+    const formattedTime = hours + ':' + minutes + ' ' + amPm;
+
+    return formattedTime;
+}
+
+
+
+  // Handle form submission (you can add your logic here)
+  document.getElementById('submit-btn').addEventListener('click', function() {
+    const scheduleEntries = document.querySelectorAll('.schedule-entry');
+        const scheduleData = [];
+        var allok = 1;
+
+
+        const selectedDate = document.getElementById('flatpickr-input').value; // Get the selected date from the date picker
+
+        scheduleEntries.forEach(entry => {
+            const startTime = entry.querySelector('.start-time').value;
+            const endTime = entry.querySelector('.end-time').value;
+            const capacity = entry.querySelector('.capacity').value;
+            if(startTime == "" || endTime == "") {
+              allok = 0; 
+              alert("Please enter all the fields");
+              return;
+            }
+
+            // Convert time strings to Date objects for comparison
+            const startTimeDate = new Date('2000-01-01T' + startTime);
+            const endTimeDate = new Date('2000-01-01T' + endTime);
+            console.log("startTime is " + startTime)
+
+            // Calculate the difference in minutes
+            const starttimeam = formatDate(startTimeDate);
+            const endtimeam = formatDate(endTimeDate);
+            const timeDifference = (endTimeDate - startTimeDate) / (1000 * 60);
+            
+            if (timeDifference < 40) {
+              allok = 0;
+                alert('End time must be at least 40 minutes greater than start time!');
+                return; // Exit the function early if the condition is not met
+            }
+
+            if (capacity < 10) {
+              allok = 0;
+            alert('Patient capacity cannot be less than 10!');
+            return; // Exit the function early if the condition is not met
+        }
+        const hiddenInput = document.getElementsByName("additionalData1")[0];
+const id = hiddenInput.value;
+            
+            scheduleData.push({ dt:selectedDate,starttimeam, endtimeam, capacity,id });
+        });
+
+         
+
+    // Log schedule data (you can send it to the server)
+
+    if(allok == 1){
+      socket.emit("setschedule",scheduleData);
+      fetch('/doctors/dashboard/schedule/set', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(scheduleData)
+    })
+    .then(response => {
+      
+      console.log(response); // Log the response from the server
+      if (response.ok) {
+        alert('Schedule successfully updated!');
+      } else {
+        alert('Error updating schedule!');
+      }
+    })
+    .then(data => {
+      console.log(data); // Log the response from the server
+      // Optionally, perform actions based on the response
+      console.log("here i am")
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle errors
+    });
+    window.location.href = '/doctors/dashboard/schedule';
+
+    }
+
+  });
+});
+  </script>
+</body>
+</html>

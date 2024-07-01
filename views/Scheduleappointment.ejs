@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard | Health Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+       .info {
+      display: flex;
+      /* Use flexbox to arrange children */
+      /* Space elements evenly */
+      padding: 20px;
+      background-color: whitesmoke;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      border-radius: 100px;
+      margin-left: 24px;
+      margin-top: 70px;
+      margin-right: 24px;
+      justify-content: space-evenly;
+    }
+    .linktag{
+      text-decoration: none;
+      color: black;
+    }
+    .info:hover{
+      background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+        .styletaka{
+          color: blue;
+        }
+    }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfe9f5;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+}
+
+nav {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background: #fff;
+  width: 280px;
+  overflow: hidden;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.common {
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 14px;
+  display: table;
+  width: 280px;
+  padding: 10px;
+}
+
+nav .fas {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.nav-item {
+  position: relative;
+  top: 12px;
+  margin-left: 8px;
+}
+
+.common:hover {
+    background: #eee;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Main Section */
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  max-height: 720px;
+    overflow-y: auto;
+
+}
+
+.main-top {
+  display: flex;
+  width: 100%;
+}
+
+.main-top i {
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+
+.main-patient-info {
+  display: flex;
+  margin-top: 20px;
+}
+
+.main-patient-info .card {
+  width: 25%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.main-patient-info .card h3 {
+  margin: 10px;
+  text-transform: capitalize;
+}
+
+.main-patient-info .card p {
+  font-size: 12px;
+}
+
+.main-patient-info .card button {
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.main-patient-info .card button:hover {
+  background: rgba(223, 70, 15, 0.856);
+}
+
+.main-patient-info .card i {
+  font-size: 22px;
+  padding: 10px;
+}
+
+/* Medical Records */
+.main-medical-records {
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.records-box {
+  width: 100%;
+  height: 300px;
+  padding: 10px 10px 30px 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.records-box ul {
+  list-style: none;
+  display: flex;
+}
+
+.records-box ul li {
+  margin: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.records-box ul .active {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.records-box .records {
+  display: flex;
+}
+
+.record {
+  width: 33%;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  background: rgb(235, 233, 233);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.record p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.record button {
+  background: #000;
+  color: #fff;
+  padding: 7px 10px;
+  border-radius: 10px;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.record button:hover {
+  background: rgba(0, 0, 0, 0.842);
+}
+
+.record i {
+  font-size: 7rem;
+  float: right;
+  margin: -20px 20px 20px 0;
+}
+
+.diagnosis {
+  color: rgb(25, 94, 54);
+}
+
+.prescription {
+  color: rgb(104, 179, 35);
+}
+
+.appointments {
+  color: rgb(28, 98, 179);
+}
+
+/* Additional styles for patient profile */
+.patient-profile .card {
+  border-radius: 10px;
+}
+
+.patient-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+
+.patient-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.patient-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+
+.patient-profile .table th,
+.patient-profile .table td {
+  font-size: 14px;
+  padding: 5px 10px;
+  color: #000;
+}
+
+.rt-container {
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.rt-row:before,
+.rt-row:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.rt-row:after {
+  clear: both;
+}
+
+[class^="col-rt-"] {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  padding: 0 15px;
+  min-height: 1px;
+  position: relative;
+}
+
+/* Add this to your CSS stylesheet */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.patient-profile-section {
+  animation: fadeIn 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+}
+
+.patient-profile-section.hide {
+  animation: fadeOut 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+  display: none;
+}
+
+.daily-update-section {
+  animation: fadeIn 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+}
+
+.daily-update-section.hide {
+  animation: fadeOut 0.5s ease-in-out;
+  /* Adjust the animation duration and timing function as needed */
+  display: none;
+}
+
+.search-bar-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.search-bar {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-input {
+  width: 500px;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+ 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 35px;
+    background:#a6c5eb;
+    display: flex;
+    z-index: 99;
+    align-items: center;
+}
+.logospan{
+    color: blue;
+}
+.hudai{
+
+}
+.showappointments{
+    border: 1px groove rgb(68, 170, 176);
+    border-radius: 5px;
+
+}
+
+#selectedDate {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.timestamp-container {
+    border: 2px solid #007bff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.timestamp-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.timestamp-buttons button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.timestamp-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.timestamp-buttons button.btn-remove {
+    background-color: #dc3545;
+}
+
+.timestamp-buttons button.btn-remove:hover {
+    background-color: #c82333;
+}
+
+/* New CSS for overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999;
+    overflow: auto;
+    
+}
+
+.overlay-content {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 500px;
+    overflow-y: auto;
+    margin: 100px auto; /* Center the overlay vertically and horizontally */
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add shadow for a pop-up effect */
+}
+
+/* Adjustments for buttons */
+.timestamp-buttons button {
+    padding: 10px 20px;
+    margin: 0 5px; /* Add some space between buttons */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 17px;
+    cursor: pointer;
+}
+
+.timestamp-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.timestamp-buttons button.btn-remove {
+    background-color: #dc3545;
+}
+
+.timestamp-buttons button.btn-remove:hover {
+    background-color: #c82333;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.btn-add {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #28a745; /* Green color */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: #218838; /* Darker green color on hover */
+}
+.btn-save{
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: blue; /* Green color */
+    color: #fff;
+    border: none;
+    border-radius: 17px;
+    cursor: pointer;
+}
+.newtime{
+    display: flex;
+    border: 2px solid blue;
+    padding: 35px;
+    border-radius: 17px;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+  </style>
+</head>
+
+<body>
+
+     <header>
+        <img src="../../public/logo.jpg" width="40px" style="margin-right:5px; border-radius: 9px; margin-left: 0px;">
+         <a href = "/landing" class = "hudai" style="text-decoration: none;"><h2 style="margin-left: 0px;">Medi<span class = "logospan">Sphere</span></h2></a>
+     </header> 
+
+
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <a class = "common" href="#" onclick="navigateToLanding()">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+            <li>
+                <a class = "common" href="#" onclick="navigateToLanding()">
+                  <i class="fas fa-home"></i>
+                  <span class="nav-item">Home</span>
+                </a>
+              </li>
+
+        <li>
+          <a class = "common" href="#" class="logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    
+    <div class="main" style="margin-top: 50px;">
+    <h2 style="justify-content: center; margin-top: 5px; margin-left: 5px;">Your all Upcoming Schedules</h2> 
+    
+    <div class="showappointments " style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr;">
+      <input type="hidden" id="hiddenDateInput" name="date" value="<%= user %>">
+      <% if(schedules.length > 0) {%>
+        <% for(let i = 0;i < schedules.length;i++) {%>
+           <div class="info" style="margin-bottom: 10px; display: grid; grid-template-columns: 1fr 1fr;">
+
+    <div class="namesection" style="margin-left: 20px; display: flex; align-items: center;">
+        <h4>Schedule date </h4>
+        <span style="margin-left: 20px; color:blue"><strong><%= schedules[i].DT %></strong></span>
+    </div>
+
+    <div class="feesection" style="margin-left: 60px; margin-right: 60px;">
+        <button  class= "details" style="text-decoration: none; margin-top: 10px; cursor: pointer;"><h3><span style="background-color: blue; color:white; padding-left: 30px; padding-top: 8px; padding-bottom: 8px; padding-right: 30px; border-radius: 20px;">Change?</span></h3></button>     
+        <button class="dates" style="display: none;"><%= schedules[i].DT %></button>
+        <!-- <button onclick="'/doctors/dashboard/seetime/?id=<%= schedules[i].id %>' "> see details</button> -->
+    </div>
+  </div>
+
+
+</a>
+<% } %>
+<% } else {%> 
+
+         <i class="fa-9x fa-solid fa-calendar-xmark" style="font-size: 20rem; margin-left: 380px; margin-top: 60px;"></i>
+        <% } %>
+    </div>
+    
+     
+    </section>
+  </div>
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="close" onclick="closeOverlay()">&times;</span>
+        <h2 id="selectedDate"></h2>
+        <div id="appointmentTimes"></div>
+    </div>
+</div>
+  <div style="margin-top: 140px;">
+
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+
+var socket = io();
+var id;
+const seeDetailsButtons = document.querySelectorAll('.details');
+    seeDetailsButtons.forEach(button => {
+      id =  document.getElementById('hiddenDateInput').value;
+
+        button.addEventListener('click', function() {
+            const date = this.nextElementSibling.textContent;
+          showOverlay(date);
+          //console.log(date);
+        });
+    });
+
+// Function to format time to 12-hour format with AM/PM
+function formatTime(time) {
+    // Parse the time string
+    const [hours, minutes] = time.split(':');
+    let formattedHours = parseInt(hours);
+    let amPm = 'AM';
+
+    // Check if the hours are past 12 for PM
+    if (formattedHours >= 12) {
+        amPm = 'PM';
+        // Convert 12-hour format for PM
+        formattedHours = formattedHours === 12 ? 12 : formattedHours - 12;
+    }
+    // Ensure that 0 is converted to 12 for midnight
+    if (formattedHours === 0) {
+        formattedHours = 12;
+    }
+
+    // Construct the formatted time string
+    return `${formattedHours}:${minutes} ${amPm}`;
+}
+
+// Example usage:
+const startTime = '13:30'; // Example start time in 24-hour format
+const formattedStartTime = formatTime(startTime);
+console.log(formattedStartTime); // Output: 1:30 PM
+
+
+
+async function showOverlay(date) {
+    const selectedDateElement = document.getElementById('selectedDate');
+    const appointmentTimesContainer = document.getElementById('appointmentTimes');
+
+    // Display selected date
+    selectedDateElement.textContent = date;
+
+    // Fetch appointment times for the selected date (you can replace this with your own logic)
+    const appointmentTimes = await getAppointmentTimesForDate(date);
+
+    // Clear previous appointment times
+    appointmentTimesContainer.innerHTML = '';
+
+    // Display appointment times
+    appointmentTimes.forEach(time => {
+        const timeElement = createTimeElement(time,date);
+        appointmentTimesContainer.appendChild(timeElement);
+    });
+
+    // Create button to add more time stamps
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add Time Stamp';
+    addButton.classList.add('btn-add');
+    addButton.addEventListener('click', () => addNewTime(date));
+
+    appointmentTimesContainer.appendChild(addButton);
+
+    // Show overlay
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'block';
+}
+
+function createTimeElement(time,date) {
+    const timeContainer = document.createElement('div');
+    timeContainer.classList.add('timestamp-container');
+    const timeElement = document.createElement('div');
+    timeElement.textContent = time.STARTTIME + ' - ' + time.ENDTIME + ' (Capacity: ' + time.CAPACITY + ')' + ' (Patient: ' + time.PATIENT + ')'
+    if(time.PATIENT == 0){
+          // Create update button
+
+      const updateButton = document.createElement('button');
+    updateButton.textContent = 'Update';
+    updateButton.classList.add('btn-update');
+    updateButton.addEventListener('click', () => openUpdateForm(time, timeElement,date));
+
+    // Create remove button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.classList.add('btn-remove');
+    removeButton.addEventListener('click', () => removeAppointment(time, timeContainer,date)); // Pass timeContainer here
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('timestamp-buttons');
+    buttonContainer.appendChild(updateButton);
+    buttonContainer.appendChild(removeButton);
+
+    timeContainer.appendChild(timeElement);
+    timeContainer.appendChild(buttonContainer);
+    }
+    else{
+      timeContainer.appendChild(timeElement);
+
+    }
+    
+
+    return timeContainer;
+}
+
+
+function createTimePicker(labelText, id) {
+    const container = document.createElement('div');
+    
+    const label = document.createElement('label');
+    label.textContent = labelText;
+    
+    const input = document.createElement('input');
+    input.setAttribute('type', 'time');
+    input.setAttribute('id', id);
+
+    container.appendChild(label);
+    container.appendChild(input);
+
+    // Adjust CSS for side by side display
+    container.style.display = 'inline-block';
+    container.style.marginRight = '20px'; // Adjust spacing between fields
+
+    return container;
+}
+
+function createNumberPicker(labelText, id) {
+    const container = document.createElement('div');
+    
+    const label = document.createElement('label');
+    label.textContent = labelText;
+    
+    const input = document.createElement('input');
+    input.setAttribute('type', 'number');
+    input.setAttribute('id', id);
+
+    container.appendChild(label);
+    container.appendChild(input);
+
+    // Adjust CSS for side by side display
+    container.style.display = 'inline-block';
+    container.style.marginRight = '20px'; // Adjust spacing between fields
+
+    return container;
+}
+
+
+function addNewTime(date) {
+    const appointmentTimesContainer = document.getElementById('appointmentTimes');
+
+    // Create div for timestamp
+    const timestampDiv = document.createElement('div');
+    timestampDiv.classList.add('newtime');
+
+    // Create input fields for start time, end time, and capacity
+    const startTimeInput = createTimePicker('Start Time:', 'startTimeInput');
+    const endTimeInput = createTimePicker('End Time:', 'endTimeInput');
+    const capacityInput = createNumberPicker('Capacity:', 'capacityInput');
+
+    // Create save button
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save';
+    saveButton.classList.add('btn-save');
+    saveButton.addEventListener('click', () => insertchange(date));
+
+    // Add input fields and save button to timestampDiv
+    timestampDiv.appendChild(startTimeInput);
+    timestampDiv.appendChild(endTimeInput);
+    timestampDiv.appendChild(capacityInput);
+    timestampDiv.appendChild(saveButton);
+
+    // Append timestampDiv to appointmentTimesContainer
+    appointmentTimesContainer.appendChild(timestampDiv);
+
+    // Move the "Add New Stamp" button below all other divs
+    appointmentTimesContainer.appendChild(document.getElementById('addTimeStampButton'));
+}
+
+
+function insertchange(date){
+  const startTime = document.getElementById('startTimeInput').value;
+    const endTime = document.getElementById('endTimeInput').value;
+    const capacity = document.getElementById('capacityInput').value;
+  console.log(startTime + '  ' + endTime + '   ' + capacity + '  ' + date)
+  const requestData = {
+    docid:id,
+    starttime:formatTime(startTime),
+    endtime:formatTime(endTime),
+    capa:capacity,
+    dt:date,
+};
+const url = `http://localhost:3300/inserttime`;
+
+// Send a POST request to the server
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+})
+.then(response => {
+    // Handle the response from the server
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const flashMessage = '<%= messages.success %>';
+        // Display the flash message using your preferred method (e.g., alert, DOM manipulation)
+        alert(flashMessage);
+    // Process the response data here if needed
+    return response.json(); // Assuming server responds with JSON
+})
+.then(data => {
+    // Handle the data received from the server
+    console.log('Server response:', data);
+})
+.catch(error => {
+    // Handle errors that occurred during the fetch operation
+    console.error('There was a problem with the fetch operation:', error);
+});
+showOverlay(date);
+
+  }
+function removeAppointment(time, timeContainer,date) {
+    // Perform remove logic here, such as sending a request to the server to delete the appointment time
+
+    // Remove the timestamp element from the DOM
+    timeContainer.parentNode.removeChild(timeContainer);
+
+    // For demonstration purposes, log the removed time
+    console.log('Removed time:', time);
+
+    const requestData = {
+    schedule:time.SCHEDULEID
+};
+    const url = `http://localhost:3300/removetime`;
+
+// Send a POST request to the server
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+})
+.then(response => {
+    // Handle the response from the server
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    // Process the response data here if needed
+    return response.json(); // Assuming server responds with JSON
+})
+.then(data => {
+    // Handle the data received from the server
+    console.log('Server response:', data);
+})
+.catch(error => {
+    // Handle errors that occurred during the fetch operation
+    console.error('There was a problem with the fetch operation:', error);
+});
+
+
+}
+
+function openUpdateForm(time, timeElement,date) {
+    var prevtime = time;
+    // Create input fields for start time, end time, and capacity
+    const startTimeInput = document.createElement('input');
+    startTimeInput.setAttribute('type', 'time');
+    startTimeInput.setAttribute('value', time.startTime);
+    startTimeInput.setAttribute('id', 'startTimeInput');
+
+    const endTimeInput = document.createElement('input');
+    endTimeInput.setAttribute('type', 'time');
+    endTimeInput.setAttribute('value', time.endTime);
+    endTimeInput.setAttribute('id', 'endTimeInput');
+
+    const capacityInput = document.createElement('input');
+    capacityInput.setAttribute('type', 'number');
+    capacityInput.setAttribute('value', time.capacity);
+    capacityInput.setAttribute('id', 'capacityInput');
+
+    // Replace time text with input fields
+    timeElement.innerHTML = ''; // Clear previous content
+    timeElement.appendChild(startTimeInput);
+    timeElement.appendChild(document.createTextNode(' - '));
+    timeElement.appendChild(endTimeInput);
+    timeElement.appendChild(document.createTextNode(' (Capacity: '));
+    timeElement.appendChild(capacityInput);
+    timeElement.appendChild(document.createTextNode(') '));
+
+    // Create save button
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save';
+    saveButton.classList.add('btn-save');
+    saveButton.addEventListener('click', () => saveChanges(prevtime,time, timeElement,date)); // Pass timeElement here
+
+    timeElement.appendChild(saveButton);
+}
+
+function saveChanges(prevtime,time, timeElement,date) {
+  console.log("previous time is ")
+  console.log(prevtime)
+    // Get updated values from input fields
+    const startTime = document.getElementById('startTimeInput').value;
+    const endTime = document.getElementById('endTimeInput').value;
+    const capacity = document.getElementById('capacityInput').value;
+
+    // Update the timeElement content with the new values
+    timeElement.textContent = formatTime(startTime) + ' - ' + formatTime(endTime) + ' (Capacity: ' + capacity + ')' + ' (Patient: ' + time.PATIENT + ')';
+
+    // Perform update logic here, such as sending the updated data to the server
+
+    // For demonstration purposes, log the updated data
+    console.log('Updated time:', { startTime, endTime, capacity });
+    const requestData = {
+    docid:id,
+    starttime:formatTime(startTime),
+    endtime:formatTime(endTime),
+    capa:capacity,
+    dt:date,
+    schedule:time.SCHEDULEID
+};
+
+const currentDate = new Date();
+const currentDateString = currentDate.toDateString();
+
+
+socket.emit('updatedtime',{
+  oldstart:prevtime.STARTTIME,
+  newstart:formatTime(startTime),
+  
+  oldend:prevtime.ENDTIME,
+  newend:formatTime(endTime),
+
+  oldcapa:prevtime.CAPACITY,
+  newcapa:capacity,
+
+  docid:id,
+  dt:currentDateString
+})
+ const url = `http://localhost:3300/updatetime`;
+
+// Send a POST request to the server
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+})
+.then(response => {
+    // Handle the response from the server
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    // Process the response data here if needed
+    return response.json(); // Assuming server responds with JSON
+})
+.then(data => {
+    // Handle the data received from the server
+    console.log('Server response:', data);
+})
+.catch(error => {
+    // Handle errors that occurred during the fetch operation
+    console.error('There was a problem with the fetch operation:', error);
+});}
+
+
+
+async function getAppointmentTimesForDate(date) {
+    // return [
+    //     { startTime: '9:00 AM', endTime: '10:00 AM', capacity: 5 },
+    //     { startTime: '10:00 AM', endTime: '11:00 AM', capacity: 7 },
+    //     { startTime: '2:00 PM', endTime: '3:00 PM', capacity: 3 }
+    // ];
+
+    const options = {
+    method:'GET'
+  }
+  const url = `http://localhost:3300/gettime?id=${id}&dt=${date}`;
+  const response = await fetch(url,options);
+  const myjson = await response.json();
+  console.log(myjson)
+  return myjson;
+}
+function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+}
+
+
+  </script>
+  <script>
+    function navigateToLanding() {
+      window.location.href = "/doctors/dashboard";
+    }
+    function logout() {
+      window.location.href = 'http://localhost:3300/doclog/login';
+    }
+  </script>
+</body>
+</html>

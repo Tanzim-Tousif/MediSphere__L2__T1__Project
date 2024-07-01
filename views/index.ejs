@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard | Health Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel = "stylesheet" href="../public/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" integrity="sha512-8RxmFOVaKQe/xtg6lbscU9DU0IRhURWEuiI0tXevv+lXbAHfkpamD4VKFQRto9WgfOJDwOZ74c/s9Yesv3VvIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+    * {
+      margin: 0;
+      padding: 0;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+
+
+    .container {
+      display: flex;
+    }
+
+    nav {
+        padding-left: 30px;
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      width: 10;
+      left: 0;
+      background: #fff;
+      width: 330px;
+      max-height: 40000px;
+      overflow-y:auto;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+   
+
+    /* Main Section */
+    .main {
+      position: relative;
+      padding: 20px;
+      width: 100%;
+      max-height: 720px;
+    overflow-y: auto;
+    }
+
+     header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            padding: 15px 100px;
+            background:#a6c5eb;
+            display: flex;
+            /* justify-content: space-evenly; */
+            z-index: 99;
+            align-items: center;
+        }
+         
+        .logo{
+            font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+        
+        }
+       .navigation{
+        display: flex;
+        margin-left: 350px;
+       }
+        .head{
+            position: relative;
+            font-size: 1.3em;
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 150px;
+        }
+
+        .head::after{
+            content: ' ';
+            position:absolute;
+            width: 100%;
+            height: 3px;
+            background: blue;
+            border-radius: 5px;
+            left:0px;
+            bottom: -6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s;
+        }
+        .head:hover::after{
+            transform: scaleX(1);
+        }
+ 
+.box{
+    margin-top: 0px;
+    padding-top: 40px; /* Adjust this value according to the height of your search bar */
+
+}
+
+.rating {
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 30px;
+        margin-right: 70px;
+        
+    }
+
+    .rating>input {
+        display: none;
+    }
+
+    .rating>label {
+        cursor: pointer;
+        color: black;
+    }
+
+    .rating>input:checked~label,
+    .rating>input:checked~label~label {
+        color: rgb(245, 152, 13);
+    }
+.search{
+    border: 1px solid black;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: black;
+}
+.search:hover{
+  cursor: pointer;
+}
+
+.gphysician{
+    padding: 100px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 24px;
+}
+.gphysician:hover{
+    background-color: bisque;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1.05); /* Increase size on hover */
+}
+.linkgp{
+    text-decoration: none;
+    color: black;
+}
+
+    .hidden {
+        display: none; /* Hide when necessary */
+    }
+    .info {
+      display:flex;
+      /* Use flexbox to arrange children */
+      /* Space elements evenly */
+      padding: 20px;
+      background-color: whitesmoke;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      border-radius: 100px;
+      margin-left: 24px;
+      margin-top: 70px;
+      margin-right: 24px;
+      justify-content: space-evenly;
+    }
+    .linktag{
+      text-decoration: none;
+      color: black;
+    }
+    .info:hover{
+      background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+        .styletaka{
+          color: blue;
+        }
+    }
+  .namesection{
+    width: 300px;
+  }
+  .fee-slider{
+    color: rgb(7, 164, 226);
+  }
+
+  input[type="range"] {
+    color: rgb(227, 198, 198); /* Change the color of the slider thumb */
+}
+
+#searchInput {
+        width: 600px;
+        padding: 5px;
+        font-size: 16px;
+        margin-left: 200px;
+        border: 3px solid skyblue;
+        border-radius: 10px;
+    }
+    #searchContainer {
+      display: block;
+      margin-top: 80px;
+      margin-left: 400px;
+      margin-bottom: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        height: 20px;
+    }
+
+    /* Add some padding to the content to prevent it from being hidden behind the fixed search bar */
+
+
+    /* Ensure search container is on top of other content */
+    #doctorList {
+        margin-top: 50px; /* Adjust this value according to the height of your search bar */
+    }
+
+    /* Add some padding to the content to prevent it from being hidden behind the fixed search bar */
+    
+    body {
+      background: #dfe9f5;
+      overflow: hidden;
+      padding-top: 60px;
+    }
+    #noResultsMessage {
+        display: none;
+        color: red;
+    }
+
+  </style>
+</head>
+
+<body>
+ 
+     <header>
+      <img src="../public/logo.jpg" width="70px" style="margin-right: 10px; border-radius: 9px;">
+      <a href = "/landing" style="text-decoration: none;"><h2 class="logo" ><span style="color: black;">Medi</span><span style="color: blue;">Sphere</span></h2></a>
+       <div class="navigation">
+           <a href="/consultation">Consultation</a>
+           <a href="/diagonstics">Diagonstics</a>
+           <% if(!user) {%>
+
+              <a href="/doclog/login">Doctors</a>
+              <% } else{%>
+                  <a href="/landing/dashboard" class = "head">Dashboard</a>
+
+                  <% } %>
+              </div>
+     </header> 
+
+
+  <div class="container" style="margin-top:40px;">
+
+    
+    <nav>
+      <div>
+        <div style="margin-bottom: 60px;"></div>
+
+        <div class="fee-slider">
+            <label for="feeRange">Fee Range:</label><br>
+            <input type="range" id="feeRange" name="feeRange" min="0" max="1000" value="1000">
+            <span id="selectedFee">0 - 1000</span>
+        </div>
+
+<br> 
+<br>
+
+
+        <label class="box"><input type="checkbox" name="specialty" value="Female">Female Doctors Only</label>
+        <br>
+        <br>
+        <h4>Select Rating</h4>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5"><i class="fa-solid fa-star fa-0.011a"></i></label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4"><i class="fa-solid fa-star"></i></label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3"><i class="fas fa-thin fa-star"></i></label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2"><i class="fas fa-thin fa-star"></i></label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1"><i class="fas fa-thin fa-star"></i></label>
+        </div>
+
+<br> <br>
+        <h3>Sort By:</h3>
+        <div>
+            <label><input type="radio" name="mcq" value="feeshigh">Fees:low to high</label><br><br>
+        <label><input type="radio" name="mcq" value="feeslow">Fees:high to low</label><br><br>
+        <label><input type="radio" name="mcq" value="ranking">Ranking</label><br><br>
+        <label><input type="radio" name="mcq" value="popularity">Popularity</label><br><br>
+
+        </div>
+        <button id="searchBtn" class="search">Search</button>
+      </div>
+    </nav>
+
+
+    <section class="main" style="margin-top: 20px;">
+
+     <% if(name.length == 0) {%>
+             <h2>No Doctors Found</h2>
+             <input type="hidden" id ="exist" value ="<%=speciality%>">
+
+      <% } else {%>
+        <div id="searchContainer">
+          <input type="text" id="searchInput" placeholder="Search  doctors by name">
+      </div>
+        <ul id="doctorList">
+
+        <input type="hidden" id ="exist" value ="<%=name[0].NAME%>">
+
+      <% for( let index = 0; index < name.length; index++ ) { %>
+
+        <a href = '\doctors\<%=name[index].DOCTORID%>' class = 'linktag'>
+         <div class="info">
+           <div class="picsection" style="margin-left: 50px;">
+             <img
+               src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/persons/123577/profile_photos/aLTRMjpgUgHcHTUaUyUdxXiDTZwsFrqCoxPOKQA3.jpg"
+               height="120">
+           </div>
+           <div class="namesection" style="margin-left: 40px;">
+             <h3><%= name[index].FULL_NAME %></h3>
+             <h2>MBBS</h2>
+               <p>Specialities:</p>
+               <h3><span style="background-color: blue; color:white; padding-left: 8px; padding-right: 8px; border-radius: 5px;"><%= name[index].NAME %></span></h4>
+           </div>
+           <div class="exsection" style="margin-left: 100px;">
+             <p>Working in </p>
+             <h3><%= name[index].CHAMBERADDRESS %></h3>
+             <p>Total experience : <strong>3+ years</strong></p>
+             <p>Hospital : <strong><%= name[index].HOSPITALNAME %></strong></p>
+
+           </div>
+           <div class="feesection" style="margin-left: 180px; margin-right: 50px;">
+             <h1><span class="styletaka">        ৳ <%= name[index].CONSULTATIONFEE %></span></h4>
+               <p>(include vat)</p>
+               <p>Per consultation</p>
+           </div>
+          
+         </div>
+         
+       </a>
+        <% } %>
+      </ul>
+      <p id="noResultsMessage">No doctors found.</p>
+
+       <% } %>
+       
+       <div class="waste" style="margin-top: 600px;"></div>
+    </section>
+  </div>
+
+  
+  <script>
+    // Get references to the input field and the doctor list
+    const searchInput = document.getElementById('searchInput');
+    const doctorListItems = document.querySelectorAll('.linktag'); // Select only direct children of doctorList
+
+    // Add event listener for input changes
+    searchInput.addEventListener('input', function () {
+        const searchTerm = this.value.trim().toLowerCase(); // Convert search term to lowercase for case-insensitive search
+        let foundDoctors = false; // Flag to track if any doctors were found
+
+        // Loop through each doctor in the list
+        doctorListItems.forEach(doctor => {
+            const doctorName = doctor.querySelector('h3').textContent.toLowerCase(); // Get doctor name and convert to lowercase
+            // If the doctor name contains the search term, display it, otherwise hide it
+            if (doctorName.includes(searchTerm)) {
+              foundDoctors = true;
+                doctor.classList.remove('hidden')
+            } else {
+                doctor.classList.add('hidden');
+            }
+        });
+
+
+        if (foundDoctors) {
+            noResultsMessage.style.display = 'none';
+        } else {
+            noResultsMessage.style.display = 'block';
+        }
+    });
+</script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+
+        const feeRange = document.getElementById('feeRange');
+    const selectedFee = document.getElementById('selectedFee');
+
+
+    
+    feeRange.addEventListener('input', function() {
+        const minFee = 0;
+        const maxFee = parseInt(feeRange.value);
+        selectedFee.textContent = `${minFee} - ${maxFee}`;
+    });
+
+
+const searchBtn = document.getElementById('searchBtn');
+searchBtn.addEventListener('click', function() {
+    const specialtyCriteria = document.querySelectorAll('input[name="specialty"]:checked');
+    const sorting = document.querySelectorAll('input[name="mcq"]:checked');
+    const rated = document.querySelectorAll('input[name="rating"]:checked');
+    console.log(feeRange.value)
+    let queryString = '';
+    queryString += 'mxfee=';
+    queryString += feeRange.value.toString();
+    specialtyCriteria.forEach(function(checkbox, index) {
+        if(checkbox.value!=='') queryString += '&';
+        queryString += `specialty=${checkbox.value}`;
+    });
+
+    sorting.forEach(function(checkbox, index) {
+        if (checkbox.value!=='' !== '') queryString += '&';
+        queryString += `mcq=${checkbox.value}`;
+    });
+    rated.forEach(function(checkbox, index) {
+        if (index !== 0 || queryString !== '') queryString += '&';
+        queryString += `rating=${checkbox.value}`;
+    });
+
+    console.log(queryString)
+
+
+    // fetch(`/consultation/${speciality}?${queryString}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         displayResults(data);
+    //     })
+    //     .catch(error => console.error('Error:', error));
+    const exist = document.getElementById('exist').value;
+    window.location.href = `/consultation/${exist}?${queryString}`;
+});
+
+function displayResults(results) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = ''; // Clear previous results
+    results.forEach(function(doctor) {
+        const doctorDiv = document.createElement('div');
+        doctorDiv.textContent = `${doctor.name} - ${doctor.specialty}`;
+        resultsDiv.appendChild(doctorDiv);
+    });
+}
+});
+
+</script>
+</body>
+</html>

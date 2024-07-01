@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+ }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 100px;
+            background:#a6c5eb;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 99;
+            align-items: center;
+        }
+        .logo{
+            font-size: 2em;
+            color: aliceblue;
+            user-select: none;
+        }
+
+        .navigation a{
+            position: relative;
+            font-size: 1.3em;
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 150px;
+        }
+        .navigation a::after{
+            content: ' ';
+            position:absolute;
+            width: 100%;
+            height: 3px;
+            background: blue;
+            border-radius: 5px;
+            left:0px;
+            bottom: -6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform: scaleX(1);
+        }
+        .navigation .button-login{
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid aliceblue;
+            outline: none;
+            border-radius: 26px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: blue;
+            font-weight: 500;
+            margin-left: 100px;
+            transition: .5s;
+            background-color: azure;
+        }
+        .navigation .button-login:hover{
+            background: blue;
+            color: whitesmoke;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+            /* background: url('../../public/home.jpg') no-repeat;
+            background-size: cover;
+            background-position: center; */
+            background: #c3d0df
+        }
+  
+
+   
+ 
+.container{
+    padding: 20px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 10px;
+    width: 1340px;
+    margin-top: 0px; margin-left: 0px; margin-right: 25px;  margin-bottom:30px;border: 1px solid #ddd;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;background-color: rgb(250, 250, 246);
+}
+
+
+
+    .dashboard{
+    width: 160px;
+    height: 900x;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+    font-weight: 500;
+    margin-left: 85px;
+    transition: .5s;
+    background-color: azure;  
+     
+        } 
+
+        .mainreviews {
+            display: inline-block;
+    /* border: 1px solid goldenrod; */
+    border-radius: 20px;
+    background-color: whitesmoke;
+    width: 500px;
+    margin-top: 0px;
+    padding: 20px;
+    width:650px;
+    margin-left: 70px;
+
+  }
+
+  .reviews {
+    /* display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 10px; */
+    display: grid;
+    grid-template-columns: 60px 300px 100px;
+    grid-row-gap: 5px;
+
+  }
+  .rating{
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 10px;
+  }
+
+  .wrappercontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 15px;
+
+  }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../../public/logo.jpg" width="50px" style="margin-right: 10px; border-radius: 9px;">
+         <h2 class="logo">Medi<span style="color: blue;">Sphere</span></h2>
+         <nav class="navigation">
+             <a href="/consultation">Consultation</a>
+             <a href="/diagonstics">Diagonstics</a>
+             <% if(!user) {%>
+
+                <a href="/doclog/login">Doctors</a>
+                <% } else{%>
+                    <a href="/landing/dashboard" class = "head">Dashboard</a>
+
+                    <% } %>
+         </nav>
+     </header>
+      <div class="wrapper" id = "wrapper"style="margin-top: 100px; margin-bottom:50px"> 
+        
+            <div class="background" style="margin-top: 10px; margin-left: 70px;">
+                <div class="container">
+                <div class="gphysicia" style="display: flex;" >
+                    <div  style="margin-top: 35px; margin-left: 115px; padding-bottom: 35px;"> 
+                        <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/persons/123577/profile_photos/aLTRMjpgUgHcHTUaUyUdxXiDTZwsFrqCoxPOKQA3.jpg" alt = "doctors image" width="150px">
+                    </div>
+        
+                    <div style="margin-left: 80px; padding-top: 10px;">
+                        <h1><%= name[0].FULL_NAME%></h1>
+                        <h4><span style="background-color: blue; color:white; padding-left: 8px; padding-right: 8px; border-radius: 5px;"><%= name[0].NAME %></span></p>
+                        <h3>Working at: <%= name[0].CHAMBERADDRESS %></h3><br>
+                        <h3 style="color: goldenrod;">Total Rating:<i class="fa-sharp fa-solid fa-star" style="color: rgb(243, 243, 28); margin-left: 19px;"></i><%= name[0].RATING %></h2>
+                    </div>
+        
+                    <div style="margin-left: 220px; margin-top: 20px; padding-right: 60px;">
+                        <h2>Consultation Fee</h2>
+                        <h2><span style="color: blue;">        ৳ <%= name[0].CONSULTATIONFEE %> </span></h2><br><br>
+                        <% if(!user) {%>
+        
+                            <a href="/login" style="text-decoration: none; margin-top: 10px;"><h3><span style="background-color: blue; color:white; padding-left: 30px; padding-top: 8px; padding-bottom: 8px; padding-right: 30px; border-radius: 20px;">Book Appoinment </span></h3></a>     
+                         <% } else {%>
+                               <a href="appoinments/<%= name[0].DOCTORID %>?date=" style="text-decoration: none; margin-top: 10px;"><h3><span style="background-color: blue; color:white; padding-left: 30px; padding-top: 8px; padding-bottom: 8px; padding-right: 30px; border-radius: 20px;">Book Appoinment </span></h3></a>
+                            <% } %>
+                        
+                            
+                        
+                    </div>
+                   
+                </div>
+                <div class="horizontal"><hr></div>
+                <div class="info" style="display: flex; margin-top: 10px; align-items: center;">
+                    <i class="fa-solid fa-circle-info"></i><p style="color:black; margin-right: 15px;">info</p> <i class="fa-solid fa-bag-shopping"></i><p style="color:black; margin-right: 15px; border: none;">Experience</p> <i class="fa-solid fa-comment"></i><button class = "reviews-btn"onclick="getreveiws()"  data-info="<%= JSON.stringify({id:name[0].DOCTORID}) %>" style="color:black; margin-right: 15px; border: none; background-color: white; font-family:poppins,sans-serif; font-weight:300;"> Reviews</p>
+                </div>
+            </div>
+        
+        
+            <!-- <div class="mainreveiws">
+                <div class="reveiws" style="display: flex; margin-left: 15px;">
+                  <i class=" fa-3x fa fa-user"></i>
+                  <div class="name" style="margin-left: 10px;">
+            
+                      <h3 style="margin-bottom: 0px;"><strong>Name Section</strong></h2>
+                      <
+            
+                  </div>
+                  <div class="rating" style="margin-left: 230px; display: flex; align-items: center; margin-right: 10px;">
+                    <h2 style="margin-right: 5px;">5</h2><i class="fa-solid fa-star"></i> 
+            
+                  </div>
+            </div>
+            <hr>
+            <h4 style="margin-left: 15px;">dfsfsdfsdfdfsd</h4>
+              </div> -->
+            </div>
+            <!-- wrapper container-->
+      </div>
+   
+<script>
+    const getreveiws = async() => {
+
+        var parentElement = document.getElementById('wrapper');
+        var className = 'mainreviews';
+
+// Select all child elements with the specified class
+var elementsToRemove = parentElement.querySelectorAll('.' + className);
+
+// Loop through the selected elements and remove them
+elementsToRemove.forEach(function(childElement) {
+    console.log("removing");
+    parentElement.removeChild(childElement);
+});
+
+
+console.log("all previous removed")
+        //console.log(typeof(document.getElementsByClassName('reviews-btn')[0].getAttribute('data-info')))
+        const options = {
+            method:'POST',
+            headers:
+                {
+                  'Content-Type': 'application/json'
+                },
+            body:(document.getElementsByClassName('reviews-btn')[0].getAttribute('data-info'))
+        };
+        const url = "http://localhost:3300/reveiws"
+        const response = await fetch(url,options);
+       // console.log("type of response is ");
+        //console.log(typeof(response))
+        const data = await response.json();
+       // console.log("type of data is ");
+        
+
+        var containerp = document.getElementById("wrapper");
+        var container = document.createElement("div");
+        container.classList.add("wrappercontainer")
+        containerp.appendChild(container);
+        let j = 1;
+        for(let i = 0;i<data.length;i++){
+            // if(j%2 == 1){
+            //     var mainreveiwcontainer = document.createElement("div");
+            //     mainreveiwcontainer.classList.add("mainreveiwcontainer");
+            //     mainreveiwcontainer.style.display = "flex";
+            // }
+           // var container = document.getElementById("container");
+
+
+
+var mainReviewsDiv = document.createElement("div");
+mainReviewsDiv.classList.add("mainreviews");
+
+var reviewsDiv = document.createElement("div");
+reviewsDiv.classList.add("reviews");
+
+var userIcon = document.createElement("i");
+userIcon.classList.add("fa", "fa-3x", "fa-user");
+
+var nameDiv = document.createElement("div");
+nameDiv.classList.add("name");
+nameDiv.style.marginLeft = "10px";
+
+var nameHeader = document.createElement("h4");
+var timeHeader = document.createElement("h5");
+nameHeader.style.marginBottom = "0px";
+var strong = document.createElement("strong");
+strong.textContent = data[i].NAME;
+
+var time = document.createElement("strong");
+time.textContent  = data[i].DT;
+timeHeader.appendChild(time);
+nameHeader.appendChild(strong);
+nameDiv.appendChild(nameHeader);
+nameDiv.appendChild(timeHeader);
+
+
+
+var ratingDiv = document.createElement("div");
+ratingDiv.classList.add("rating");
+
+ var ratingHeader = document.createElement("h2");
+// ratingHeader.style.marginRight = "5px";
+// ratingHeader.textContent = "5";
+for(let o = 0;o < 5 - data[i].RATING;o++){
+var starIcon = document.createElement("i");
+starIcon.classList.add("fa-regular", "fa-star");
+//starIcon.style.color = "#FFD700";
+
+ratingDiv.appendChild(ratingHeader);
+ratingDiv.appendChild(starIcon);
+}
+for(let o = 0;o < data[i].RATING;o++){
+var starIcon = document.createElement("i");
+starIcon.classList.add("fa-solid", "fa-star");
+starIcon.style.color = "#FFD700";
+
+ratingDiv.appendChild(ratingHeader);
+ratingDiv.appendChild(starIcon);
+}
+
+
+reviewsDiv.appendChild(userIcon);
+reviewsDiv.appendChild(nameDiv);
+reviewsDiv.appendChild(ratingDiv);
+
+mainReviewsDiv.appendChild(reviewsDiv);
+
+var hr = document.createElement("hr");
+mainReviewsDiv.appendChild(hr);
+
+var commentHeader = document.createElement("h4");
+commentHeader.style.marginLeft = "15px";
+commentHeader.style.marginTop = "10px";
+commentHeader.textContent = data[i].CMNT;
+mainReviewsDiv.appendChild(commentHeader);
+//mainreveiwcontainer.appendChild(mainReviewsDiv)
+container.appendChild(mainReviewsDiv);
+  }
+}
+</script>
+</body>
+</html>

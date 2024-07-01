@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Dashboard | Health Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+    * {
+      margin: 0;
+      padding: 0;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #dfe9f5;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    nav {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      left: 0;
+      background: #fff;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      text-align: center;
+      display: flex;
+      margin: 10px 0 0 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+    }
+
+    .logo span {
+      font-weight: bold;
+      padding-left: 15px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    a {
+      position: relative;
+      color: rgb(85, 83, 83);
+      font-size: 14px;
+      display: table;
+      width: 280px;
+      padding: 10px;
+    }
+
+    nav .fas {
+      position: relative;
+      width: 70px;
+      height: 40px;
+      top: 14px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .nav-item {
+      position: relative;
+      top: 12px;
+      margin-left: 8px;
+    }
+
+    a:hover {
+      background: #eee;
+    }
+
+    .logout {
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* Main Section */
+    .main {
+      position: relative;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .main-top {
+      display: flex;
+      width: 100%;
+    }
+
+    .main-top i {
+      position: absolute;
+      right: 0;
+      margin: 10px 30px;
+      color: rgb(110, 109, 109);
+      cursor: pointer;
+    }
+
+    .main-patient-info {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .main-patient-info .card {
+      width: 25%;
+      margin: 10px;
+      background: #fff;
+      text-align: center;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-patient-info .card h3 {
+      margin: 10px;
+      text-transform: capitalize;
+    }
+
+    .main-patient-info .card p {
+      font-size: 12px;
+    }
+
+    .main-patient-info .card button {
+      background: orangered;
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .main-patient-info .card button:hover {
+      background: rgba(223, 70, 15, 0.856);
+    }
+
+    .main-patient-info .card i {
+      font-size: 22px;
+      padding: 10px;
+    }
+
+    /* Medical Records */
+    .main-medical-records {
+      margin-top: 20px;
+      text-transform: capitalize;
+    }
+
+    .records-box {
+      width: 100%;
+      height: 300px;
+      padding: 10px 10px 30px 10px;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .records-box ul {
+      list-style: none;
+      display: flex;
+    }
+
+    .records-box ul li {
+      margin: 10px;
+      color: gray;
+      cursor: pointer;
+    }
+
+    .records-box ul .active {
+      color: #000;
+      border-bottom: 1px solid #000;
+    }
+
+    .records-box .records {
+      display: flex;
+    }
+
+    .record {
+      width: 33%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      background: rgb(235, 233, 233);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .record p {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .record button {
+      background: #000;
+      color: #fff;
+      padding: 7px 10px;
+      border-radius: 10px;
+      margin-top: 3rem;
+      cursor: pointer;
+    }
+
+    .record button:hover {
+      background: rgba(0, 0, 0, 0.842);
+    }
+
+    .record i {
+      font-size: 7rem;
+      float: right;
+      margin: -20px 20px 20px 0;
+    }
+
+    .diagnosis {
+      color: rgb(25, 94, 54);
+    }
+
+    .prescription {
+      color: rgb(104, 179, 35);
+    }
+
+    .appointments {
+      color: rgb(28, 98, 179);
+    }
+
+    /* Additional styles for patient profile */
+    .patient-profile .card {
+      border-radius: 10px;
+    }
+
+    .patient-profile .card .card-header .profile_img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 10px solid #ccc;
+      border-radius: 50%;
+    }
+
+    .patient-profile .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .patient-profile .card p {
+      font-size: 16px;
+      color: #000;
+    }
+
+    .patient-profile .table th,
+    .patient-profile .table td {
+      font-size: 14px;
+      padding: 5px 10px;
+      color: #000;
+    }
+
+    .rt-container {
+      margin: 0 auto;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .rt-row:before,
+    .rt-row:after {
+      display: table;
+      line-height: 0;
+      content: "";
+    }
+
+    .rt-row:after {
+      clear: both;
+    }
+
+    [class^="col-rt-"] {
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      padding: 0 15px;
+      min-height: 1px;
+      position: relative;
+    }
+
+    /* Add this to your CSS stylesheet */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    .patient-profile-section {
+      animation: fadeIn 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+    }
+
+    .patient-profile-section.hide {
+      animation: fadeOut 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+      display: none;
+    }
+
+    .daily-update-section {
+      animation: fadeIn 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+    }
+
+    .daily-update-section.hide {
+      animation: fadeOut 0.5s ease-in-out;
+      /* Adjust the animation duration and timing function as needed */
+      display: none;
+    }
+
+    .search-bar-container {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .search-bar {
+      display: flex;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px;
+      margin-right: 10px;
+      margin-left: 300px;
+      width: 600px;
+    }
+
+    .search-input {
+      width: 500px;
+      padding: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .search-button {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .test-suggestion-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-family: "Poppins", sans-serif;
+        }
+    .test-suggestion-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+    .test-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            animation: fadeIn 0.3s ease forwards;
+            display: none;
+            max-height: 150px;
+            /* Set maximum height */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+        }
+
+        .test-suggestions.show {
+            display: block;
+        }
+
+        .test-suggestions .test-suggestion {
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .test-suggestions .test-suggestion:hover {
+            background-color: #f2f2f2;
+        }
+
+
+
+        /* #searchContainer {
+    position: relative;
+    width: 200px;
+    margin: 50px auto; 
+  } */
+
+  #suggestions {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 700px;
+    /* top: calc(100% + 5px); Position it below the search bar */
+    left: 0;
+    align-items: center;
+  }
+
+  .suggestions table tr {
+    width: 700px; /* Decrease the height of each row */
+  }
+  table tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  .suggestion {
+    padding: 5px;
+    cursor: pointer;
+    font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
+  .suggestion:hover {
+    background-color: #f5f5f5;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li>
+          <a href="#" class="logo">
+            <img src="../public/logo.jpg" alt="">
+            <span class="nav-item">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="navigateToLanding()">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Home</span>
+          </a>
+        </li>
+        <li>
+
+          <a href="/landing/dashboard/profile" id="username">
+            <i class="fas fa-user"></i>
+            <span class="nav-item">Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fas fa-heartbeat"></i>
+            <span class="nav-item">Medical Records</span>
+          </a>
+        </li>
+        <li>
+          <a href="/consultation">
+            <i class="fas fa-user-md"></i>
+            <span class="nav-item">Specialities</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="main">
+
+      <div class="search-bar">
+<div id="searchContainer">
+  <input type="text" class="search-input"  id="suggestedTest"  onfocus="animatePlaceholder()"
+  placeholder="">
+  <div id="suggestions"></div>
+</div>
+  </div>
+
+
+      <div class="main-patient-info">
+        <div class="card">
+          <i class="fas fa-user"></i>
+          <h3>Personal Information</h3>
+          <button onclick="window.location.href = '/landing/dashboard/profile'">View Details</button>
+        </div>
+        <div class="card">
+          <i class="fas fa-notes-medical"></i>
+          <h3>Medical History</h3>
+          <button>View Records</button>
+        </div>
+
+
+
+        <div class="card">
+          <i class="fas fa-hospital-user"></i>
+          <h3>Recent Appointments</h3>
+          <button onclick="window.location.href = '/landing/dashboard/pastappointment'">View Details</button>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-hospital-user"></i>
+          <h3>Diagnostic</h3>
+          <button onclick="window.location.href = '/diagnostics'">View Diagnostics</button>
+        </div>
+
+      </div>
+      <section class="main-medical-records">
+        <div class="records-box">
+          <ul>
+            <h1>
+              <li class="active">Medical Records</li>
+            </h1>
+          </ul>
+          <div class="records">
+            <div class="record diagnosis">
+              <h3>Diagnosis</h3>
+              <p>Current Diagnosis: Hypertension</p>
+              <button onclick="window.location.href = '/landing/dashboard/diagnosis'">View Details</button>
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="record prescription">
+              <h3>Prescriptions</h3>
+              <p>Last Prescription</p>
+              <button onclick="window.location.href = '/landing/dashboard/prescriptions'">View Details</button>
+              <i class="fas fa-prescription-bottle"></i>
+            </div>
+            <div class="record appointments">
+              <h3>Appointments</h3>
+              <p>Next Appointment: 2023-02-10</p>
+              <button onclick="window.location.href = '/landing/dashboard/upappointment'">View Details</button>
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+ 
+  <script>
+
+  const specialties = [
+    { name: "General Physician", description: " Cold,flu,fever,vomiting,infections,headaches or any other general health issues " },
+    { name: "Gynecology", description: " Any women's health related issues including pregnancy, menstruation, fertility issues, hormone disorders etc." },
+    { name: "Dermatology", description: "Treatment of diseases related to skin, hair and nails and some cosmetic problems." },
+    { name: "ENT", description: "Diagnosis,evaluation and treatment  of diseases of the ear, nose and throat  regions." },
+    { name: "Orthopedics", description: "Bones, muscles, joints, tendons, ligaments." },
+    { name: "Cardiology", description: "Diagnosis, treatment of congenital <br> heart defects, coronary artery  disease, heart failure, and valvular  heart disease." },
+    { name: "Neurology", description: "Diagnosis, treatment for disease  involving the central and peripheral  nervous systems." },
+    { name: "Gastroentrology", description: "Diseases affecting the gastrointestinal tract, which includes from mouth into anus,along the alimentary canal..." },
+    { name: "Urology", description: "Diagnosis and treatment of diseases of the male and female urinary-tract system" },
+    { name: "Endocrinology", description: "Treatment of diseases related <br>to problems with hormone" }
+  ];
+
+    const searchBar = document.getElementById('suggestedTest');
+    const suggestionsContainer = document.getElementById('suggestions');
+  
+    // Function to show suggestions based on input
+    function showSuggestions(input) {
+      suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+    const filteredSpecialties = specialties.filter(specialty =>
+      specialty.name.toLowerCase().includes(input.toLowerCase()));
+  
+      if (filteredSpecialties.length === 0) {
+        suggestionsContainer.style.display = 'none';
+        return;
+      }
+  
+      filteredSpecialties.forEach(specialty => {
+      const suggestion = document.createElement('div');
+      suggestion.classList.add('suggestion');
+      suggestion.innerHTML = `
+
+      <h2 style="color: blue;">${specialty.name}</h2>
+      <div>${specialty.description}</div>
+      `;
+      suggestion.addEventListener('click', () => {
+       // searchBar.value = specialty.name; // Place selected specialty name in the search bar
+        window.location.href = `/consultation/${specialty.name}`;
+
+        suggestionsContainer.style.display = 'none'; // Hide suggestions
+      });
+      suggestionsContainer.appendChild(suggestion);
+    });
+
+    suggestionsContainer.style.display = 'block'; // Show suggestions
+  }
+
+  
+    // Event listener for input on search bar
+    searchBar.addEventListener('input', () => {
+      const input = searchBar.value.trim();
+      showSuggestions(input);
+  
+      // Adjust position of suggestions based on search bar position
+      suggestionsContainer.style.left = `${searchBar.offsetLeft}px`;
+    });
+  
+    // Event listener to hide suggestions when clicking outside the search bar
+    document.addEventListener('click', (event) => {
+      if (!document.getElementById('searchContainer').contains(event.target)) {
+        suggestionsContainer.style.display = 'none';
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      animatePlaceholder(); // Start animation on page load
+    });
+    let profileSectionVisible = false;
+    let dailyUpdateSectionVisible = false;
+
+    function viewProfileDetails() {
+      const mainPatientInfoSection = document.querySelector(".records-box");
+      const profileSection = document.querySelector(".patient-profile-section");
+
+      if (profileSectionVisible) {
+        mainPatientInfoSection.style.display = "block";
+        profileSection.classList.add("fadeOut");
+        setTimeout(() => {
+          profileSection.style.display = "none";
+          profileSection.classList.remove("fadeOut");
+        }, 500);
+        profileSectionVisible = false;
+      } else {
+        mainPatientInfoSection.style.display = "none";
+
+        const newProfileSection = document.createElement("div");
+        newProfileSection.classList.add("patient-profile-section", "fadeIn");
+        newProfileSection.innerHTML = `
+        <div class="container">
+        <div class="col-rt-12">
+            <div class="Scriptcontent">
+                <div class="patient-profile py-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-transparent text-center">
+                                      <div style="height: 26px"></div>
+                                     
+                                        <h1><strong><%=patient.FULLNAME %><strong></h1>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-0"><strong class="pr-1">Patient ID:</strong><%=patient.ID%></p>
+                                        <p class="mb-0"><strong class="pr-1">Address:</strong><%=patient.ADDRESS%></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height: 26px"></div>
+                            <div class="col-lg-8">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-transparent border-0">
+                                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Medical Information</h3>
+                                    </div>
+                                    <div class="card-body pt-0">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                
+                                                <th width="30%">Date of Birth</th>
+                                                <td width="2%">:</td>
+                                                <td><%= patient.FORMATTED_DATEOFBIRTH%></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Contact Number</th>
+                                                <td width="2%">:</td>
+                                                <td><%=patient.CONTACTNUMBER%></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Blood Group</th>
+                                                <td width="2%">:</td>
+                                                <td><%= patient.BLOODGROUP %></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Height(cm)</th>
+                                                <td width="2%">:</td>
+                                                <td><%= patient.HEIGHT %></td>
+                                            </tr>
+                                            <tr>
+                                                <th width="30%">Mail Address</th>
+                                                <td width="2%">:</td>
+                                                <td><%= patient.EMAILADDRESS %></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div style="height: 26px"></div>
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-transparent border-0">
+                                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Vaccination History</h3>
+                                    </div>
+                                    <div class="card-body pt-0">
+                                        <p><%= patient.VACCINATIONHISTORY %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          </div>
+                <!-- End Patient Profile -->
+        `;
+        document.querySelector(".main").appendChild(newProfileSection);
+
+        // Update the DOM with patient details
+
+        profileSectionVisible = true;
+        let dailyUpdateSectionVisible = false;
+      }
+      // profileSectionVisible = false;
+    }
+
+    function viewDailyUpdates() {
+      const mainPatientInfoSection = document.querySelector(".records-box");
+      const dailyUpdateSection = document.querySelector(".daily-update-section");
+
+      if (dailyUpdateSectionVisible) {
+        mainPatientInfoSection.style.display = "block";
+        dailyUpdateSection.classList.add("fadeOut");
+        setTimeout(() => {
+          dailyUpdateSection.style.display = "none";
+          dailyUpdateSection.classList.remove("fadeOut");
+        }, 500);
+        dailyUpdateSectionVisible = false;
+      } else {
+        mainPatientInfoSection.style.display = "none";
+
+        const newDailyUpdateSection = document.createElement("div");
+        newDailyUpdateSection.classList.add("daily-update-section", "fadeIn");
+        newDailyUpdateSection.innerHTML = `
+      <!-- Daily Health Updates -->
+      <div class="container">
+        <div class="col-rt-12">
+          <div class="Scriptcontent">
+            <div class="daily-update-section py-4">
+              <div class="container">
+                <div class="card-body pt-0">
+                                          <table class="table table-bordered">
+                                              <tr>
+                                                  
+                                                  <th width="30%">BLOODPRESSURE</th>
+                                                  <td width="2%">:</td>
+                                                  <td><%= patient.BLOODPRESSURE%></td>
+                                              </tr>
+                                              <tr>
+                                                  <th width="30%">BMI</th>
+                                                  <td width="2%">:</td>
+                                                  <td><%=patient.BMI%></td>
+                                              </tr>
+                                              <tr>
+                                                  <th width="30%">HEARTRATE</th>
+                                                  <td width="2%">:</td>
+                                                  <td><%= patient.HEARTRATE %></td>
+                                              </tr>
+                                          </table>
+                                      </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Daily Health Updates -->
+    `;
+        document.querySelector(".main").appendChild(newDailyUpdateSection);
+
+        dailyUpdateSectionVisible = true;
+        profileSectionVisible = false;
+      }
+    }
+    function navigateToLanding() {
+      window.location.href = "/landing/dashboard";
+    }
+    const placeholderText = "Search by  specialty";
+    let currentIndex = 0;
+
+    function animatePlaceholder() {
+      const searchInput = document.querySelector('.search-input');
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % (placeholderText.length + 1);
+        const animatedText = placeholderText.substring(0, currentIndex);
+        searchInput.setAttribute('placeholder', animatedText);
+      }, 200); // Adjust the speed as needed
+    }
+
+    function searchDoctors() {
+      const query = document.querySelector('.search-input').value.toLowerCase();
+      console.log(query.rows);
+      if (query) {
+        // Redirect to the specialty page based on the search input
+        window.location.href = `/consultation/${query}`;
+      } else {
+        // Handle other search logic or display results
+        alert('Please enter a valid search term.');
+      }
+    }
+    function logout() {
+      window.location.href = 'http://localhost:3300/landing';
+    }
+  </script>
+</body>
+</html>

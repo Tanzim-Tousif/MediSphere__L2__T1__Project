@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay Page Example</title>
+    <style>
+        .overlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    overflow: auto;
+}
+
+.overlay-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <button id="openOverlayButton">Open Overlay</button>
+    
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close" onclick="closeOverlay()">&times;</span>
+            <h2>Data</h2>
+            <h2>fsdfsd</h2>
+            <a href="sfdf"></a>
+            <div id="dataContainer"></div>
+            <button onclick="saveChanges()">Save Changes</button>
+        </div>
+    </div>
+<script>
+    const openOverlayButton = document.getElementById('openOverlayButton');
+const overlay = document.getElementById('overlay');
+const dataContainer = document.getElementById('dataContainer');
+
+openOverlayButton.addEventListener('click', function() {
+    fetchDataFromServer();
+    openOverlay();
+});
+
+function fetchDataFromServer() {
+    // Make an AJAX request to fetch data from the server
+    // Example using Fetch API
+    fetch('/data')
+    .then(response => response.json())
+    .then(data => {
+        // Display the fetched data in the overlay
+        displayData(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}
+
+function displayData(data) {
+    // Clear previous data
+    dataContainer.innerHTML = '';
+
+    // Render the fetched data in the overlay
+    data.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.textContent = item.name; // Adjust this based on your data structure
+        dataContainer.appendChild(itemElement);
+    });
+}
+
+function saveChanges() {
+    // Get the modified data from the overlay
+    // Example: Serialize form data or build an object with updated values
+
+    // Make an AJAX request to send the modified data to the server for saving
+    // Example using Fetch API
+    fetch('/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(modifiedData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Handle successful response
+            console.log('Data saved successfully.');
+            // Close the overlay or perform any other action
+        } else {
+            // Handle error response
+            console.error('Error saving data:', response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('Error saving data:', error);
+    });
+}
+
+function openOverlay() {
+    overlay.style.display = 'block';
+}
+
+function closeOverlay() {
+    overlay.style.display = 'none';
+}
+
+</script>
+</body>
+</html>

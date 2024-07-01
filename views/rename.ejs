@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   <style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+ *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 100px;
+            background:rgb(159, 201, 219);
+            display: flex;
+            z-index: 99;
+            align-items: center;
+        }
+        .logo{
+            font-size: 2em;
+            color: aliceblue;
+            user-select: none;
+        }
+        .navigation{
+            margin-left: 200px;
+        }
+        .navigation a{
+            position: relative;
+            font-size: 1.3em;
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 150px;
+        }
+        .navigation a::after{
+            content: ' ';
+            position:absolute;
+            width: 100%;
+            height: 3px;
+            background: blue;
+            border-radius: 5px;
+            left:0px;
+            bottom: -6px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s;
+        }
+        .navigation a:hover::after{
+            transform: scaleX(1);
+        }
+        .navigation .button-login{
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid aliceblue;
+            outline: none;
+            border-radius: 26px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: blue;
+            font-weight: 500;
+            margin-left: 100px;
+            transition: .5s;
+            background-color: azure;
+        }
+        .navigation .button-login:hover{
+            background: blue;
+            color: whitesmoke;
+        } 
+        
+         body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('../public/home.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            /* background: rgb(177, 217, 239) */
+        } 
+/* background: url('../public/home.jpg') no-repeat;
+            background-size: cover;
+            background-position: center; */
+       
+
+
+.gphysician{
+    display: flex; /* Use flexbox to arrange children */
+     /* Space elements evenly */
+    padding: 20px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 24px;
+    width: 105%;
+}
+.gphysician:hover{
+    background-color: bisque;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+}
+.gynae{
+    display: flex; /* Use flexbox to arrange children */
+     /* Space elements evenly */
+    padding: 20px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 30px;
+    width: 105%;
+}
+.gynae:hover{
+    background-color: bisque;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+}
+.dermatology{
+    display: flex; /* Use flexbox to arrange children */
+     /* Space elements evenly */
+    padding: 20px;
+    background-color:whitesmoke;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;  
+    border-radius: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
+    width: 105%;
+}
+.dermatology:hover{
+    background-color: bisque;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change box shadow on hover */
+    transform: scale(1..5); /* Increase size on hover */
+}
+.gppic{
+    display: inline;
+}
+.subcontainer{
+    /* display: flex;
+    margin-top: 70px;
+    justify-content: space-evenly;
+    margin-right: 80px; */
+    margin-top: 50px;
+    margin-right: 80px; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 50px;
+    grid-column-gap: 20px;
+}
+.gpmaintext{
+    margin-top: 5px;
+}
+.linkgp{
+    text-decoration: none;
+    color:black;
+    margin-left: 50px;
+    font-size: small;
+    
+}
+
+
+.main{
+    margin-top: 110px;
+}
+.dashboard{
+    width: 160px;
+    height: 900x;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid aliceblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+    font-weight: 500;
+    margin-left: 85px;
+    transition: .5s;
+    background-color: azure;   
+        }
+
+
+   </style>
+</head>
+<body>
+    <header>
+        <img src="../public/logo.jpg" width="70px" style="margin-right: 10px; border-radius: 9px;">
+        <a href = "/landing" style="text-decoration: none;"><h2 class="logo" ><span style="color: black;">Medi</span><span style="color: blue;">Sphere</span></h2></a>
+         <nav class="navigation">
+             <a href="/consultation">Consultation</a>
+             <a href="/diagonstics">Diagonstics</a>
+             <% if(!user) {%>
+
+                <a href="/doclog/login">Doctors</a>
+                <% } else{%>
+                    <a href="/landing/dashboard" class = "head">Dashboard</a>
+
+                    <% } %>
+         </nav>
+     </header>
+
+
+
+
+
+
+    <div class="main">
+    <h1 style="text-align: center; background-color: #a6c5eb; margin-top: 5px;">Please select a speciality</h1>
+    <div class="container">
+
+     <div class="subcontainer">
+
+
+
+        <a href="/consultation/General Physician" class = 'linkgp'>
+        <div class="gphysician">
+                <img height = '100' src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/1/icon/EJy2QTfS3obDIMrqhjStpgjIxAckPqTihOjxV7u6.png">
+            <div class="gptext">
+                <H1>General Physician</H1>
+                <p class = "gpmaintext"> Cold,flu,fever,vomiting,infections,<br>headaches or any other general <br>health issues <br><br></p>
+            </div>
+        </div>
+        </a>
+
+        <a href="/consultation/Gynecology" class = 'linkgp'>
+            <div class="gynae">
+                    <img width="100px" src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/3/icon/iprhJxlTlkcOQbc0iuXlTpei40f60x7LZOiGpBzf.png">
+                <div class="gptext">
+                    <H1>Gynae & Obs</H3>
+                    <p class = "gpmaintext">  Any women's health related issues <br>including pregnancy, menstruation, <br>fertility issues, hormone disorders etc.<br><br></p>
+                </div>
+            </div>
+            </a>
+
+            <a href="/consultation/dermatology" class = 'linkgp'>
+                <div class="dermatology">
+                    <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/30/icon/ESUqhyr1GpKgxXzrxKlpAqMPypWTP6n4mbWCOI8W.png" alt="Dermatology" class="h-24 w-24 object-cover" height="100px">
+                                        <div class="gptext">
+                        <H1>Dermatology</H3>
+                        <p class = "gpmaintext">Treatment of diseases related to skin,<br> hair and nails and some cosmetic<br> problems.<br><br></p>
+                    </div>
+                </div>
+                </a>
+            
+
+            
+                <a href="/consultation/ent " class = 'linkgp'>
+                    <div class="gphysician">
+                        <img height = "100px" src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/16/icon/VdlUczrw6Eb8ZFZlN09wJVhphLxDuEDRuZ9rPvEC.png" alt="ENT" class="h-24 w-24 object-cover">                        <div class="gptext">
+                            <H1>ENT</H3>
+                            <p class = "gpmaintext">Diagnosis,evaluation and treatment <br> of diseases of the ear, nose and throat <br> regions.<br><br></p>
+                        </div>
+                    </div>
+                    </a>
+    
+                    <a href="/consultation/orthopedics" class = 'linkgp'>
+                        <div class="gphysician">
+                            <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/41/icon/GCg1ic0weej7VjGHnG3jIfSXK3ORGccwCzWK8YJv.png" alt="Orthopedics" class="h-24 w-24 object-cover" height="100px">                            <div class="gptext">
+                                <H1>Orthopedics</H3>
+                                <p class = "gpmaintext">Bones, muscles, joints, tendons,<br> ligaments.<br><br><br></p>
+                            </div>
+                        </div>
+                        </a>
+
+
+                        <a href="/consultation/cardiology" class = 'linkgp'>
+                            <div class="gphysician">
+                                <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/7/icon/rcnfWwh0oSbSRHkzXbFz8PY1f93EXbkGehmcuE05.png" alt="Cardiology" class="h-24 w-24 object-cover" height="100px">                                <div class="gptext">
+                                    <H1>Cardiology</H3>
+                                    <p class = "gpmaintext">Diagnosis, treatment of congenital <br> heart defects, coronary artery <br> disease, heart failure, and valvular <br> heart disease.</p>
+                                </div>
+                            </div>
+                            </a>
+                        
+
+                    
+                        
+                            <a href="/consultation/neurology" class = 'linkgp'>
+                                <div class="gphysician">
+                                    <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/4/icon/YIvidAboz1kXm94Lk1Twlq927jEaUnZ0aQObfJCG.png" alt="Neurology" class="h-24 w-24 object-cover" height="100px">                                    <div class="gptext">
+                                        <H1>Neurology</H3>
+                                        <p class = "gpmaintext">Diagnosis, treatment for disease <br> involving the central and peripheral <br> nervous systems.<br><br></p>
+                                    </div>
+                                </div>
+                                </a>
+                
+                                <a href="/consultation/gastroentrology" class = 'linkgp'>
+                                    <div class="gphysician">
+                                        <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/6/icon/iHX721XYwkx13Ef3HikJ7fXIaDN0E5l4YHe6OBVW.png" alt="Gastroenterology" class="h-24 w-24 object-cover" height="100px">                                        <div class="gptext">
+                                            <H1>Gastroentrology</H3>
+                                            <p class = "gpmaintext">Diseases affecting the gastrointestinal<br> tract, which includes from mouth <br>into anus,along the alimentary canal...<br><br></p>
+                                        </div>
+                                    </div>
+                                    </a>
+            
+            
+                                    <a href="/consultation/urology" class = 'linkgp'>
+                                        <div class="gphysician">
+                                            <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/23/icon/QPx6kVGDlo4XXBUTgbynLaINsGdWrP2mTnbOCGtS.png" alt="Urology" class="h-24 w-24 object-cover" height="100">                                            <div class="gptext">
+                                                <H1>Urology</H3>
+                                                <p class = "gpmaintext">Diagnosis and treatment of diseases<br> of the male and female urinary-tract system<br><br><br></p>
+                                            </div>
+                                        </div>
+                                        </a>
+
+
+                                        <a href="/consultation/endocrinology" class = 'linkgp'>
+                                          <div class="gphysician">
+                                            <img src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/11/icon/bD3DgM42G8patWS7o468h8n0ThLyoc6S8GGvuyZR.png" alt="Endocrinology" class="h-24 w-24 object-cover" height="100">                                              <div class="gptext">
+                                                  <H1>Endocrinology</H3>
+                                                  <p class = "gpmaintext">Treatment of diseases related <br>to problems with hormone<br><br><br></p>
+                                              </div>
+                                          </div>
+                                          </a>
+                          
+                                          <a href="/consultation/gastroentrology" class = 'linkgp'>
+                                              <div class="gphysician">
+                                                      <img height = '100' src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/1/icon/EJy2QTfS3obDIMrqhjStpgjIxAckPqTihOjxV7u6.png">
+                                                  <div class="gptext">
+                                                      <H1>Gastroentrology</H3>
+                                                      <p class = "gpmaintext">Diseases affecting the gastrointestinal<br> tract, which include the organs<br> from mouth into anus,along <br>the alimentary canal...</p>
+                                                  </div>
+                                              </div>
+                                              </a>
+                      
+                      
+                                              <a href="/consultation/urology" class = 'linkgp'>
+                                                  <div class="gphysician">
+                                                          <img height = '100' src="https://doctime-core-ap-southeast-1.s3.ap-southeast-1.amazonaws.com/specialities/1/icon/EJy2QTfS3obDIMrqhjStpgjIxAckPqTihOjxV7u6.png">
+                                                      <div class="gptext">
+                                                          <H1>Urology</H3>
+                                                          <p class = "gpmaintext">Diagnosis and treatment of diseases<br> of the male and female urinary-tract system<br><br><br></p>
+                                                      </div>
+                                                  </div>
+                                                  </a>
+    </div>
+    <div style="margin-top: 100px;">
+
+    </div>
+</div>
+
+</body>
+</html>

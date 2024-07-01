@@ -1,0 +1,8 @@
+const logincontroller = (req,res,next) => {
+    req.session.user = null;
+    console.log(req.session.user);
+    console.log("rendering log in page")
+    res.render('login');
+}
+
+module.exports = logincontroller;

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Include Google Font -->
+    <style>
+      body {
+    font-family: "Poppins", sans-serif;
+    background: #dfe9f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 200px 50px 50px 50px; /* Adjust the margin-top */
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%; /* Adjust the width as needed */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 40px);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.left-card {
+    margin-right: 20px; /* Adjust spacing between cards */
+}
+
+.right-card {
+    margin-left: 20px; /* Adjust spacing between cards */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Update profile</h1>
+            <form action="/landing/dashboard/profileupdate" method="POST">
+                <!-- Personal Information -->
+                <div class="input-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" value="<%= patient.FIRSTNAME %>">
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" value="<%= patient.LASTNAME %>">
+                </div>
+                <div class="input-group">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" value="<%= patient.GENDER %>">
+                </div>
+                <div class="input-group">
+                    <label for="contactnumber">Contact Number:</label>
+                    <input type="text" id="contactnumber" name="contactnumber" value="<%= patient.CONTACTNUMBER %>">
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="<%= patient.ADDRESS %>">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" value="<%= patient.PASSWORD %>">
+                </div>
+                <div class="input-group">
+                    <label for="emailaddress">Email Address:</label>
+                    <input type="text" id="emailaddress" name="emailaddress" value="<%= patient.EMAILADDRESS %>" disabled>
+                </div>
+                <!-- Health Records -->
+                <div class="input-group">
+                    <label for="weight">Weight:</label>
+                    <input type="text" id="weight" name="weight" value="<%= patient.WEIGHT %>">
+                </div>
+                <div class="input-group">
+                    <label for="height">Height:</label>
+                    <input type="text" id="height" name="height" value="<%= patient.HEIGHT %>">
+                </div>
+                <div class="input-group">
+                    <label for="vaccinationhistory">Vaccination History:</label>
+                    <input type="text" id="vaccinationhistory" name="vaccinationhistory" value="<%= patient.VACCINATIONHISTORY %>">
+                </div>
+                <div class="input-group">
+                    <label for="bloodpressure">Blood Pressure:</label>
+                    <input type="text" id="bloodpressure" name="bloodpressure" value="<%= patient.BLOODPRESSURE %>">
+                </div>
+                <div class="input-group">
+                    <label for="bmi">BMI:</label>
+                    <input type="text" id="bmi" name="bmi" value="<%= patient.BMI %>">
+                </div>
+                <div class="input-group">
+                    <label for="heartrate">Heart Rate:</label>
+                    <input type="text" id="heartrate" name="heartrate" value="<%= patient.HEARTRATE %>">
+                </div>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
